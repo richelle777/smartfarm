@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+		<org.projectlombok.version>1.18.0</org.projectlombok.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,7 +45,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>${org.projectlombok.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
@@ -88,6 +89,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>${org.projectlombok.version}</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
