@@ -14,5 +14,4 @@ public class LivraisonDto {
     private LocalDate date;
     private String statutLivraison;
     private LocalisationDto localisationDto;
-    private CommandeDto commandeDto;
 }

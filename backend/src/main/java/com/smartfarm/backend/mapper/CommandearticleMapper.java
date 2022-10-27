@@ -9,9 +9,9 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, nullValueCheckStrategy =  NullValueCheckStrategy.ALWAYS)
 public interface CommandearticleMapper {
-    Commandearticle toEntity(CommandearticleDto commandearticleDto);
+    Commandearticle toEntity(CommandearticleDto CommandearticleDto);
 
-    CommandearticleDto toDto(Commandearticle commandearticle);
+    CommandearticleDto toDto(Commandearticle Commandearticle);
 
-    void copy(CommandearticleDto commandearticleDto, @MappingTarget Commandearticle commandearticle);
+    void copy(CommandearticleDto CommandearticleDto, @MappingTarget Commandearticle Commandearticle);
 }

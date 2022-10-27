@@ -19,5 +19,4 @@ public class Commandearticle {
 
     @Column(name = "quantite", nullable = false)
     private Integer quantite;
-
 }

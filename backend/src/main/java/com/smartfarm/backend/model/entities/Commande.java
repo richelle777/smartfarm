@@ -6,9 +6,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Table(name = "commande", indexes = {
-        @Index(name = "idClient", columnList = "idClient")
+        @Index(name = "idClient", columnList = "idClient"),
+        @Index(name = "idLivraison", columnList = "idLivraison")
 })
 @Entity
 @NoArgsConstructor
@@ -20,7 +22,7 @@ public class Commande {
     private String id;
 
     @Column(name = "dateCom", nullable = false)
-    private LocalDate date;
+    private LocalDate dateCom;
 
     @Column(name = "livre", nullable = false)
     private Boolean livre = false;
@@ -31,5 +33,10 @@ public class Commande {
 
     @ManyToOne
     @JoinColumn(name = "idClient")
-    private Customer client;
+    private Customer idClient;
+
+    @ManyToOne
+    @JoinColumn(name = "idLivraison")
+    private Livraison idLivraison;
+
 }
