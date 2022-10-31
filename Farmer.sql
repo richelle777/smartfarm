@@ -1,5 +1,5 @@
-create database farmer;
-use farmer;
+create database bdsmartfarmer;
+use bdsmartfarmer;
 
 drop table if exists Customer;
 CREATE TABLE Customer (
@@ -64,6 +64,16 @@ CREATE TABLE Article (
         REFERENCES Fermier (idFermier)
 );
 
+drop table if exists Livraison;
+CREATE TABLE Livraison (
+    idLivraison CHAR(255) PRIMARY KEY,
+    dateLiv DATE,
+    statutLivraison ENUM('Livré', 'Non livré', 'Annulé'),
+    idLocalisation CHAR(255) NOT NULL,
+    FOREIGN KEY (idLocalisation)
+        REFERENCES Localisation (idLocalisation)
+);
+
 drop table if exists Commande;
 create table Commande(
 	idCommande char(255) primary key,
@@ -71,7 +81,9 @@ create table Commande(
     livre boolean not null,
     statutCommande ENUM('Non payé', 'Payé', 'En attente', 'Annulé') NOT NULL,
     idClient char(255),
-    foreign key(idClient) references Customer(idClient)
+    idLivraison CHAR(255),
+    foreign key(idClient) references Customer(idClient),
+    FOREIGN KEY(idLivraison) REFERENCES Livraison(idLivraison)
 );
 
 drop table if exists CommandeArticle;
@@ -86,18 +98,6 @@ CREATE TABLE CommandeArticle (
     PRIMARY KEY (idArticle , idCommande)
 );
 
-drop table if exists Livraison;
-CREATE TABLE Livraison (
-    idLivraison CHAR(255) PRIMARY KEY,
-    dateLiv DATE,
-    statutLivraison ENUM('Livré', 'Non livré', 'Annulé'),
-    idLocalisation CHAR(255) NOT NULL,
-    idCommande CHAR(255) NOT NULL,
-    FOREIGN KEY (idLocalisation)
-        REFERENCES Localisation (idLocalisation),
-    FOREIGN KEY (idCommande)
-        REFERENCES Commande (idCommande)
-);
 
 drop table if exists Paiement;
 CREATE TABLE Paiement (
@@ -118,3 +118,5 @@ CREATE TABLE PaiementCarte (
     FOREIGN KEY (idPaiement)
         REFERENCES Paiement (idPaiement)
 );
+
+SHOW TABLES ;
