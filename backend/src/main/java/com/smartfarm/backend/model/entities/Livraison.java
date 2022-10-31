@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Table(name = "livraison", indexes = {
-        @Index(name = "idLocalisation", columnList = "idLocalisation")
+        @Index(name = "id_localisation", columnList = "id_localisation")
 })
 @Entity
 @NoArgsConstructor
@@ -16,17 +16,17 @@ import java.time.LocalDate;
 @Data
 public class Livraison {
     @Id
-    @Column(name = "idLivraison", nullable = false)
+    @Column(name = "id_livraison", nullable = false)
     private String id;
 
-    @Column(name = "dateLiv")
-    private LocalDate dateLiv;
+    @Column(name = "date_liv")
+    private LocalDate date;
 
     @Lob
-    @Column(name = "statutLivraison")
+    @Column(name = "statut_livraison")
     private String statutLivraison;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idLocalisation", nullable = false)
-    private Localisation idLocalisation;
+    @JoinColumn(name = "id_localisation", nullable = false)
+    private Localisation localisation;
 }

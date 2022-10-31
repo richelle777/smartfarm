@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Table(name = "article", indexes = {
-        @Index(name = "idCategorie", columnList = "idCategorie"),
-        @Index(name = "idImage", columnList = "idImage"),
-        @Index(name = "idFermier", columnList = "idFermier")
+        @Index(name = "id_categorie", columnList = "id_categorie"),
+        @Index(name = "id_image", columnList = "id_image"),
+        @Index(name = "id_fermier", columnList = "id_fermier")
 })
 @Entity
 @NoArgsConstructor
@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Data
 public class Article {
     @Id
-    @Column(name = "idArticle", nullable = false)
+    @Column(name = "id_article", nullable = false)
     private String id;
 
     @Column(name = "nom", nullable = false)
@@ -33,14 +33,14 @@ public class Article {
     private Integer quantite;
 
     @ManyToOne
-    @JoinColumn(name = "idCategorie")
+    @JoinColumn(name = "id_categorie")
     private Categorie categorie;
 
     @ManyToOne
-    @JoinColumn(name = "idImage")
+    @JoinColumn(name = "id_image")
     private Image image;
 
     @ManyToOne
-    @JoinColumn(name = "idFermier")
+    @JoinColumn(name = "id_fermier")
     private Fermier fermier;
 }

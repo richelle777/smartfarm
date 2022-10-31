@@ -9,8 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Table(name = "commande", indexes = {
-        @Index(name = "idClient", columnList = "idClient"),
-        @Index(name = "idLivraison", columnList = "idLivraison")
+        @Index(name = "id_client", columnList = "id_client"),
+        @Index(name = "id_livraison", columnList = "id_livraison")
 })
 @Entity
 @NoArgsConstructor
@@ -18,25 +18,25 @@ import java.util.List;
 @Data
 public class Commande {
     @Id
-    @Column(name = "idCommande", nullable = false)
+    @Column(name = "id_commande", nullable = false)
     private String id;
 
-    @Column(name = "dateCom", nullable = false)
+    @Column(name = "date_com", nullable = false)
     private LocalDate dateCom;
 
     @Column(name = "livre", nullable = false)
     private Boolean livre = false;
 
     @Lob
-    @Column(name = "statutCommande", nullable = false)
+    @Column(name = "statut_commande", nullable = false)
     private String statutCommande;
 
     @ManyToOne
-    @JoinColumn(name = "idClient")
-    private Customer idClient;
+    @JoinColumn(name = "id_client")
+    private Customer id_client;
 
     @ManyToOne
-    @JoinColumn(name = "idLivraison")
-    private Livraison idLivraison;
+    @JoinColumn(name = "id_livraison")
+    private Livraison id_livraison;
 
 }

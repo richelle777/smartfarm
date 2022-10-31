@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 public class Categorie {
     @Id
-    @Column(name = "idCategorie", nullable = false)
+    @Column(name = "id_categorie", nullable = false)
     private String id;
 
     @Column(name = "nom", nullable = false)

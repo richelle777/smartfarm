@@ -1,10 +1,11 @@
-package com.smartfarm.backend.service;
+package com.smartfarm.backend.serviceImpl;
 
 import com.smartfarm.backend.mapper.LivraisonMapper;
+import com.smartfarm.backend.mapper.LocalisationMapper;
 import com.smartfarm.backend.model.dto.LivraisonDto;
 import com.smartfarm.backend.model.entities.Livraison;
 import com.smartfarm.backend.repository.LivraisonRepository;
-import com.smartfarm.backend.service.interfaces.ILivraison;
+import com.smartfarm.backend.service.ILivraison;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,18 +19,28 @@ public class LivraisonServiceImpl implements ILivraison {
     LivraisonRepository livraisonRepository;
 
     @Autowired
+    LocalisationMapper localisationMapper;
+
+    @Autowired
     LivraisonMapper livraisonMapper;
 
     @Override
     public List<LivraisonDto> listLivraison() {
-        return livraisonRepository.findAll().stream().map( livraison -> livraisonMapper.toDto(livraison))
+        List<LivraisonDto> livraisonDtos = livraisonRepository.findAll().stream().map( livraison -> {
+            LivraisonDto livraisonDto = livraisonMapper.toDto(livraison);
+            livraisonDto.setLocalisationDto(localisationMapper.toDto(livraison.getLocalisation()));
+            return livraisonDto;
+        })
                 .collect(Collectors.toList());
+        return livraisonDtos;
     }
 
     @Override
     public LivraisonDto findLivraisonById(String id) {
         if(livraisonRepository.findById(id).isPresent()){
-            return livraisonMapper.toDto(livraisonRepository.findById(id).get());
+            LivraisonDto livraisonDto = livraisonMapper.toDto(livraisonRepository.findById(id).get());
+            livraisonDto.setLocalisationDto(localisationMapper.toDto(livraisonRepository.findById(id).get().getLocalisation()));
+            return livraisonDto;
         }
         return null;
     }
@@ -37,7 +48,11 @@ public class LivraisonServiceImpl implements ILivraison {
     @Override
     public List<LivraisonDto> findLivraisonByStatut(String state) {
         return livraisonRepository.findByStatutLivraison(state).get().stream()
-                .map(livraison -> livraisonMapper.toDto(livraison))
+                .map(livraison -> {
+                    LivraisonDto livraisonDto = livraisonMapper.toDto(livraison);
+                    livraisonDto.setLocalisationDto(localisationMapper.toDto(livraison.getLocalisation()));
+                    return livraisonDto;
+                })
                 .collect(Collectors.toList());
     }
 

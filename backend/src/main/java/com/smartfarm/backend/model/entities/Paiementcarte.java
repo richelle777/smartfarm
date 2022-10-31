@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Table(name = "paiementcarte", indexes = {
-        @Index(name = "idPaiement", columnList = "idPaiement")
+        @Index(name = "id_paiement", columnList = "id_paiement")
 })
 @Entity
 @NoArgsConstructor
@@ -16,19 +16,19 @@ import java.time.LocalDate;
 @Data
 public class Paiementcarte {
     @Id
-    @Column(name = "idPC", nullable = false)
+    @Column(name = "id_pc", nullable = false)
     private String id;
 
     @Column(name = "crypto")
     private String crypto;
 
-    @Column(name = "numeroCarte")
+    @Column(name = "numero_carte")
     private Long numeroCarte;
 
-    @Column(name = "dateVerticale", nullable = false)
+    @Column(name = "date_verticale", nullable = false)
     private LocalDate dateVerticale;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idPaiement", nullable = false)
+    @JoinColumn(name = "id_paiement", nullable = false)
     private Paiement paiement;
 }

@@ -1,9 +1,9 @@
-package com.smartfarm.backend.service;
+package com.smartfarm.backend.serviceImpl;
 
 import com.smartfarm.backend.mapper.CommandeMapper;
 import com.smartfarm.backend.model.dto.CommandeDto;
 import com.smartfarm.backend.repository.CommandeRepository;
-import com.smartfarm.backend.service.interfaces.ICommande;
+import com.smartfarm.backend.service.ICommande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

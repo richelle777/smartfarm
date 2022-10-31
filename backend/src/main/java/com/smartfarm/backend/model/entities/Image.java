@@ -16,12 +16,12 @@ import javax.persistence.Table;
 @Data
 public class Image {
     @Id
-    @Column(name = "idImage", nullable = false)
+    @Column(name = "id_image", nullable = false)
     private String id;
 
     @Column(name = "url")
     private String url;
 
-    @Column(name = "urlThumbnail")
+    @Column(name = "url_thumbnail")
     private String urlThumbnail;
 }

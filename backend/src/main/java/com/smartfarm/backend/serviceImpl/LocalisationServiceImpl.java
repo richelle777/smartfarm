@@ -1,10 +1,10 @@
-package com.smartfarm.backend.service;
+package com.smartfarm.backend.serviceImpl;
 
 import com.smartfarm.backend.mapper.LocalisationMapper;
 import com.smartfarm.backend.model.dto.LocalisationDto;
 import com.smartfarm.backend.model.entities.Localisation;
 import com.smartfarm.backend.repository.LocalisationRepository;
-import com.smartfarm.backend.service.interfaces.ILocalisation;
+import com.smartfarm.backend.service.ILocalisation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
