@@ -19,6 +19,9 @@ public class Localisation {
     @Column(name = "id_localisation", nullable = false)
     private String id;
 
+    @Column(name = "residence")
+    private String residence;
+
     @Column(name = "ville")
     private String ville;
 
