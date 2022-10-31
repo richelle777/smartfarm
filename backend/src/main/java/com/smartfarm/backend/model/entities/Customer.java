@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Data
 public class Customer {
     @Id
-    @Column(name = "idClient", nullable = false)
+    @Column(name = "id_client", nullable = false)
     private String id;
 
     @Column(name = "nom", nullable = false)

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Data
 public class Localisation {
     @Id
-    @Column(name = "idLocalisation", nullable = false)
+    @Column(name = "id_localisation", nullable = false)
     private String id;
 
     @Column(name = "ville")

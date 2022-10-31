@@ -3,7 +3,7 @@ use bdsmartfarmer;
 
 drop table if exists Customer;
 CREATE TABLE Customer (
-    idClient CHAR(255) PRIMARY KEY,
+    id_client CHAR(255) PRIMARY KEY,
     nom CHAR(255) NOT NULL,
     email CHAR(255) NOT NULL,
     mdp CHAR(255) NOT NULL,
@@ -12,21 +12,21 @@ CREATE TABLE Customer (
 
 drop table if exists Categorie;
 CREATE TABLE Categorie (
-    idCategorie CHAR(255) PRIMARY KEY,
+    id_categorie CHAR(255) PRIMARY KEY,
     nom CHAR(255) NOT NULL,
     descript CHAR(255)
 );
 
 drop table if exists Image;
 CREATE TABLE Image (
-    idImage CHAR(255) PRIMARY KEY,
+    id_image CHAR(255) PRIMARY KEY,
     url CHAR(255),
-    urlThumbnail CHAR(255)
+    url_thumbnail CHAR(255)
 );
 
 drop table if exists Localisation;
 CREATE TABLE Localisation (
-    idLocalisation CHAR(255) PRIMARY KEY,
+    id_localisation CHAR(255) PRIMARY KEY,
     ville CHAR(255) DEFAULT 'Yaoundé',
     pays CHAR(255) DEFAULT 'Cameroun',
     region CHAR(255) DEFAULT 'Centre',
@@ -36,87 +36,101 @@ CREATE TABLE Localisation (
 
 drop table if exists Fermier;
 CREATE TABLE Fermier (
-    idFermier CHAR(255) PRIMARY KEY,
+    id_fermier CHAR(255) PRIMARY KEY,
     nom CHAR(255) NOT NULL,
     email CHAR(255) NOT NULL,
     pwd CHAR(255) NOT NULL,
     tel BIGINT NOT NULL,
-    idLocalisation CHAR(255),
-    FOREIGN KEY (idLocalisation)
-        REFERENCES Localisation (idLocalisation)
+    id_localisation CHAR(255),
+    FOREIGN KEY (id_localisation)
+        REFERENCES Localisation (id_localisation)
 );
 
 drop table if exists Article;
 CREATE TABLE Article (
-    idArticle CHAR(255) PRIMARY KEY,
+    id_article CHAR(255) PRIMARY KEY,
     nom CHAR(255) NOT NULL,
     descript CHAR(255),
     prixU INT NOT NULL,
     qte INT,
-    idCategorie CHAR(255),
-    idImage CHAR(255),
-    idFermier CHAR(255),
-    FOREIGN KEY (idCategorie)
-        REFERENCES Categorie (idCategorie),
-    FOREIGN KEY (idImage)
-        REFERENCES Image (idImage),
-    FOREIGN KEY (idFermier)
-        REFERENCES Fermier (idFermier)
+    id_categorie CHAR(255),
+    id_image CHAR(255),
+    id_fermier CHAR(255),
+    FOREIGN KEY (id_categorie)
+        REFERENCES Categorie (id_categorie),
+    FOREIGN KEY (id_image)
+        REFERENCES Image (id_image),
+    FOREIGN KEY (id_fermier)
+        REFERENCES Fermier (id_fermier)
 );
 
 drop table if exists Livraison;
 CREATE TABLE Livraison (
-    idLivraison CHAR(255) PRIMARY KEY,
-    dateLiv DATE,
-    statutLivraison ENUM('Livré', 'Non livré', 'Annulé'),
-    idLocalisation CHAR(255) NOT NULL,
-    FOREIGN KEY (idLocalisation)
-        REFERENCES Localisation (idLocalisation)
+    id_livraison CHAR(255) PRIMARY KEY,
+    date_liv DATE,
+    statut_livraison ENUM('Livré', 'Non livré', 'Annulé'),
+    id_localisation CHAR(255) NOT NULL,
+    FOREIGN KEY (id_localisation)
+        REFERENCES Localisation (id_localisation)
 );
 
 drop table if exists Commande;
 create table Commande(
-	idCommande char(255) primary key,
-    dateCom date not null,
+	id_commande char(255) primary key,
+    date_com date not null,
     livre boolean not null,
-    statutCommande ENUM('Non payé', 'Payé', 'En attente', 'Annulé') NOT NULL,
-    idClient char(255),
-    idLivraison CHAR(255),
-    foreign key(idClient) references Customer(idClient),
-    FOREIGN KEY(idLivraison) REFERENCES Livraison(idLivraison)
+    statut_commande ENUM('Non payé', 'Payé', 'En attente', 'Annulé') NOT NULL,
+    id_client char(255),
+    id_livraison CHAR(255),
+    foreign key(id_client) references Customer(id_client),
+    FOREIGN KEY(id_livraison) REFERENCES Livraison(id_livraison)
 );
 
 drop table if exists CommandeArticle;
 CREATE TABLE CommandeArticle (
     quantite INT NOT NULL,
-    idArticle CHAR(255) NOT NULL,
-    idCommande CHAR(255) NOT NULL,
-    FOREIGN KEY (idArticle)
-        REFERENCES Article (idArticle),
-    FOREIGN KEY (idCommande)
-        REFERENCES Commande (idCommande),
-    PRIMARY KEY (idArticle , idCommande)
+    id_article CHAR(255) NOT NULL,
+    id_commande CHAR(255) NOT NULL,
+    FOREIGN KEY (id_article)
+        REFERENCES Article (id_article),
+    FOREIGN KEY (id_commande)
+        REFERENCES Commande (id_commande),
+    PRIMARY KEY (id_article , id_commande)
 );
 
 
 drop table if exists Paiement;
 CREATE TABLE Paiement (
-    idPaiement CHAR(255) PRIMARY KEY,
+    id_paiement CHAR(255) PRIMARY KEY,
     montant BIGINT NOT NULL,
-    idCommande CHAR(255) NOT NULL,
-    FOREIGN KEY (idCommande)
-        REFERENCES Commande (idCommande)
+    id_commande CHAR(255) NOT NULL,
+    FOREIGN KEY (id_commande)
+        REFERENCES Commande (id_commande)
 );
 
 drop table if exists PaiementCarte;
 CREATE TABLE PaiementCarte (
-    idPC CHAR(255) PRIMARY KEY,
+    id_pc CHAR(255) PRIMARY KEY,
     crypto CHAR(255),
-    numeroCarte BIGINT,
-    dateVerticale DATE NOT NULL,
-    idPaiement CHAR(255) NOT NULL,
-    FOREIGN KEY (idPaiement)
-        REFERENCES Paiement (idPaiement)
+    numero_carte BIGINT,
+    date_verticale DATE NOT NULL,
+    id_paiement CHAR(255) NOT NULL,
+    FOREIGN KEY (id_paiement)
+        REFERENCES Paiement (id_paiement)
 );
 
 SHOW TABLES ;
+
+INSERT INTO localisation VALUE
+    ('LO001', DEFAULT, DEFAULT, DEFAULT, '0005874', '558898');
+
+DESCRIBE localisation;
+
+INSERT INTO livraison VALUES
+                          ('LI003', '2022-10-31', 'Livré', 'LO001'),
+                          ('LI004', '2022-10-31', 'Annulé', 'LO003'),
+                          ('LI005', '2022-10-31', 'Livré', 'LO003');
+
+SELECT *
+FROM localisation;
+

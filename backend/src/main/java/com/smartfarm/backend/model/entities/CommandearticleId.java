@@ -16,14 +16,14 @@ import java.util.Objects;
 @Data
 public class CommandearticleId implements Serializable {
     private static final long serialVersionUID = 5491876019970880265L;
-    @Column(name = "idArticle", nullable = false)
-    private String idArticle;
-    @Column(name = "idCommande", nullable = false)
-    private String idCommande;
+    @Column(name = "id_article", nullable = false)
+    private String id_article;
+    @Column(name = "id_commande", nullable = false)
+    private String id_commande;
 
     @Override
     public int hashCode() {
-        return Objects.hash(idArticle, idCommande);
+        return Objects.hash(id_article, id_commande);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class CommandearticleId implements Serializable {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         CommandearticleId entity = (CommandearticleId) o;
-        return Objects.equals(this.idArticle, entity.idArticle) &&
-                Objects.equals(this.idCommande, entity.idCommande);
+        return Objects.equals(this.id_article, entity.id_article) &&
+                Objects.equals(this.id_commande, entity.id_commande);
     }
 }

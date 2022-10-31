@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Table(name = "fermier", indexes = {
-        @Index(name = "idLocalisation", columnList = "idLocalisation")
+        @Index(name = "id_localisation", columnList = "id_localisation")
 })
 @Entity
 @NoArgsConstructor
@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Data
 public class Fermier {
     @Id
-    @Column(name = "idFermier", nullable = false)
+    @Column(name = "id_fermier", nullable = false)
     private String id;
 
     @Column(name = "nom", nullable = false)
@@ -31,6 +31,6 @@ public class Fermier {
     private Long telephone;
 
     @ManyToOne
-    @JoinColumn(name = "idLocalisation")
+    @JoinColumn(name = "id_localisation")
     private Localisation localisation;
 }
