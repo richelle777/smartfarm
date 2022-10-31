@@ -1,6 +1,5 @@
 package com.smartfarm.backend.presentation.api;
 
-import com.smartfarm.backend.model.dto.CommandeDto;
 import com.smartfarm.backend.model.dto.FermierDto;
 import com.smartfarm.backend.model.dto.LivraisonDto;
 import com.smartfarm.backend.model.dto.LocalisationDto;
