@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Table(name = "commandearticle", indexes = {
-        @Index(name = "id_commande", columnList = "id_commande")
-})
+@Table(name = "commandearticle")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor

@@ -125,3 +125,6 @@ SHOW TABLES ;
 SELECT *
 FROM localisation;
 
+SELECT *
+FROM commande;
+

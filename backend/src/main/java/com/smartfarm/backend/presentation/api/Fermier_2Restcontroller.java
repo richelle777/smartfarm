@@ -3,10 +3,8 @@ package com.smartfarm.backend.presentation.api;
 import com.smartfarm.backend.model.dto.FermierDto;
 import com.smartfarm.backend.model.dto.LivraisonDto;
 import com.smartfarm.backend.model.dto.LocalisationDto;
-import com.smartfarm.backend.service.ICommande;
-import com.smartfarm.backend.service.IFermier;
-import com.smartfarm.backend.service.ILivraison;
-import com.smartfarm.backend.service.ILocalisation;
+import com.smartfarm.backend.model.dto.Produit;
+import com.smartfarm.backend.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +28,9 @@ public class Fermier_2Restcontroller {
 
     @Autowired
     private ILocalisation iLocalisation;
+
+    @Autowired
+    private ICommandearticle iCommandearticle;
 
     @PostMapping(value = "/localisation/save")
     public void saveLocalisation(@RequestBody LocalisationDto localisationDto) {
@@ -72,5 +73,11 @@ public class Fermier_2Restcontroller {
         Fermier_2Restcontroller.log.info("Mise à jour - Fermier : " + id);
         FermierDto fermierDto = iFermier.findFermierById(id);
         iFermier.updateFermier(fermierDto);
+    }
+
+    @GetMapping("/commandearticle/commande/{id}/data")
+    public ResponseEntity<List<Produit>> getListArticleByCommande(@PathVariable String id) {
+        Fermier_2Restcontroller.log.info("Les artiles de la commande : " + id);
+        return ResponseEntity.ok(iCommandearticle.listArticleByCommande(id));
     }
 }

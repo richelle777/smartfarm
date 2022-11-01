@@ -22,7 +22,7 @@ public class Commande {
     private String id;
 
     @Column(name = "date_com", nullable = false)
-    private LocalDate dateCom;
+    private LocalDate date;
 
     @Column(name = "livre", nullable = false)
     private Boolean livre = false;
@@ -33,10 +33,10 @@ public class Commande {
 
     @ManyToOne
     @JoinColumn(name = "id_client")
-    private Customer id_client;
+    private Customer client;
 
     @ManyToOne
     @JoinColumn(name = "id_livraison")
-    private Livraison id_livraison;
+    private Livraison livraison;
 
 }
