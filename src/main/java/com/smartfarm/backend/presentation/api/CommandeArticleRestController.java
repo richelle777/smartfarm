@@ -38,7 +38,8 @@ public class CommandeArticleRestController {
     }
 
     @GetMapping("/{qte}/{id}/update")
-    public int updateCommandeArticle(@PathVariable Integer qte, @PathVariable String id){
+    public int updateCommandeArticle(@P
+                                                 Integer qte, @PathVariable String id){
         return iCommandearticle.UpdateCommandeArticle(qte, id);
     }
 }
