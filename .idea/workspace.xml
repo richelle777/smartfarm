@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/service/ICustomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/serviceImpl/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InsertionBD.sql" beforeDir="false" afterPath="$PROJECT_DIR$/InsertionBD.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/repository/CommandeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/repository/CommandeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/service/ICommande.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/service/ICommande.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/service/ICommandearticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/service/ICommandearticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/serviceImpl/CommandeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/serviceImpl/CommandeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/serviceImpl/CommandearticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/smartfarm/backend/serviceImpl/CommandearticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/smartFarm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smartFarm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +18,18 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
   </component>
   <component name="ProjectId" id="2HgFJPXP02CFE7nmlLkIpf9Gl1y" />
   <component name="ProjectViewState">
@@ -31,6 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -46,5 +57,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
