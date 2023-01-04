@@ -1,3 +1,5 @@
+drop database if exists bdsmartfarmer;
+
 create database bdsmartfarmer;
 use bdsmartfarmer;
 
@@ -42,7 +44,7 @@ CREATE TABLE Fermier (
     email VARCHAR(255) NOT NULL,
     pwd VARCHAR(255) NOT NULL,
     tel BIGINT NOT NULL,
-    id_localisation VARCHAR(255),
+    id_localisation VARCHAR(50),
     FOREIGN KEY (id_localisation)
         REFERENCES Localisation (id_localisation)
 );
