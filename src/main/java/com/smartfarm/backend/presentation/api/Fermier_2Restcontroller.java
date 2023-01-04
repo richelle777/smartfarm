@@ -1,6 +1,9 @@
 package com.smartfarm.backend.presentation.api;
 
-import com.smartfarm.backend.model.dto.*;
+import com.smartfarm.backend.model.dto.FermierDto;
+import com.smartfarm.backend.model.dto.LivraisonDto;
+import com.smartfarm.backend.model.dto.LocalisationDto;
+import com.smartfarm.backend.model.dto.Produit;
 import com.smartfarm.backend.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/fermier2")
@@ -77,11 +79,5 @@ public class Fermier_2Restcontroller {
     public ResponseEntity<List<Produit>> getListArticleByCommande(@PathVariable String id) {
         Fermier_2Restcontroller.log.info("Les artiles de la commande : " + id);
         return ResponseEntity.ok(iCommandearticle.listArticleByCommande(id));
-    }
-
-    @GetMapping("/customer/{id}/commande/history")
-    public ResponseEntity<Map<CommandeDto, List<Produit>>> getHistoriqueCommandeCustomer(@PathVariable String id) {
-        Fermier_2Restcontroller.log.info("Historique des commandes de l'user id : " + id);
-        return ResponseEntity.ok(iCommande.historiqueCommandeClient(id));
     }
 }
