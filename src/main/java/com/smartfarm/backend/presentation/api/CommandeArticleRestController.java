@@ -31,10 +31,12 @@ public class CommandeArticleRestController {
         //ArticleRestController.log.info("enregistrer-commande");
         iCommandearticle.saveCommandeArticle(create);
     }
+
     @GetMapping("/{id}/delete")
     public int deteleCommandeArticle(@PathVariable String id){
         return iCommandearticle.deleteCommandeArticleById(id);
     }
+
     @GetMapping("/{qte}/{id}/update")
     public int updateCommandeArticle(@PathVariable Integer qte, @PathVariable String id){
         return iCommandearticle.UpdateCommandeArticle(qte, id);
