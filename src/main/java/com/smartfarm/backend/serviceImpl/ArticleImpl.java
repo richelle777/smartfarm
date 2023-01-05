@@ -61,8 +61,8 @@ public class ArticleImpl implements IArticle{
             System.out.println(article);
             ArticleDto articleDto = articleMapper.toDto(article);
             System.out.println(articleDto);
-//            articleDto.setCategorieDto(categorieMapper.toDto(article.getCategorie()));
-//            articleDto.setFermierDto(fermierMapper.toDto(article.getFermier()));
+            articleDto.setCategorieDto(categorieMapper.toDto(article.getCategorie()));
+            articleDto.setFermierDto(fermierMapper.toDto(article.getFermier()));
             articleDto.setImageDto(imageMapper.toDto(article.getImage()));
             return articleDto;
         }).collect(Collectors.toList());
@@ -93,6 +93,7 @@ public class ArticleImpl implements IArticle{
     @Override
     public List<ArticleDtoForList> searchArticlesBYCategorie(String category) {
         List<ArticleDtoForList> articleDtos = articleRepository.findArticleByCategorie(category).stream().map(article ->{
+            System.out.println(article);
             ArticleDtoForList articleDto = articleForListMapper.toDto(article);
             articleDto.setImageDto(imageMapper.toDto(article.getImage()));
             return articleDto;
