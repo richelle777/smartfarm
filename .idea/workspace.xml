@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="2316d788-d359-4d33-9cac-2ea65f11101a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/FermierRestController.java" afterDir="false" />
@@ -37,6 +38,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/smartFarm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smartFarm.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,8 +171,12 @@
       <workItem from="1672914035579" duration="42000" />
       <updated>1668698748227</updated>
       <workItem from="1668698752584" duration="35000" />
+<<<<<<< Updated upstream
       <workItem from="1672918624319" duration="927000" />
       <workItem from="1672919656678" duration="449000" />
+=======
+      <workItem from="1672921930515" duration="8000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
