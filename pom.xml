@@ -15,8 +15,8 @@
 	<description>Mobile app for a farm and customer</description>
 	<properties>
 		<java.version>1.8</java.version>
-		<org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
-		<org.projectlombok.version>1.18.24</org.projectlombok.version>
+		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+		<org.projectlombok.version>1.18.0</org.projectlombok.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -68,6 +68,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 				<configuration>
 					<excludes>
 						<exclude>
