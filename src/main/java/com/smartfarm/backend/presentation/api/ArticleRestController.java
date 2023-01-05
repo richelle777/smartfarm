@@ -38,7 +38,7 @@ public class ArticleRestController {
 //    }
 
     @GetMapping("/{category}/searchByCategorie")
-    public  ResponseEntity<List<ArticleDtoForList>> searchArticle(@Param("category") String category){
+    public  ResponseEntity<List<ArticleDtoForList>> searchArticle(@PathVariable String category){
         return ResponseEntity.ok(iArticle.searchArticlesBYCategorie(category));
     }
 }
