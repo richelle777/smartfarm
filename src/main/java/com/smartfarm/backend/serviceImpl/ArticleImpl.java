@@ -45,10 +45,21 @@ public class ArticleImpl implements IArticle{
     }
 
     @Override
-    public List<ArticleDtoForList> listArticles() {
-        List<ArticleDtoForList> articleDtos = articleRepository.findAll().stream().map(article ->{
+    public List<ArticleDto> listArticles() {
+//        List<ArticleDtoForList> articleDtos = articleRepository.findAll().stream().map(article ->{
+//            System.out.println(article);
+//            ArticleDtoForList articleDto = articleForListMapper.toDto(article);
+//            System.out.println(articleDto);
+////            articleDto.setCategorieDto(categorieMapper.toDto(article.getCategorie()));
+////            articleDto.setFermierDto(fermierMapper.toDto(article.getFermier()));
+//            articleDto.setImageDto(imageMapper.toDto(article.getImage()));
+//            return articleDto;
+//        }).collect(Collectors.toList());
+//        System.out.println(articleDtos);
+//        return articleDtos;
+        List<ArticleDto> articleDtos = articleRepository.findAll().stream().map(article ->{
             System.out.println(article);
-            ArticleDtoForList articleDto = articleForListMapper.toDto(article);
+            ArticleDto articleDto = articleMapper.toDto(article);
             System.out.println(articleDto);
 //            articleDto.setCategorieDto(categorieMapper.toDto(article.getCategorie()));
 //            articleDto.setFermierDto(fermierMapper.toDto(article.getFermier()));

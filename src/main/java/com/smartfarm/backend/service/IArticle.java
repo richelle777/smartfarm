@@ -8,7 +8,7 @@ import java.util.List;
 public interface IArticle {
     Article findByNumber(Integer number);
     public void deleteByNumber(Integer number);
-    List<ArticleDtoForList> listArticles();
+    List<ArticleDto> listArticles();
     ArticleDtoForList searchArticleByNom(String nom);
     List<ArticleDtoForList> searchArticlesBYkeyword(String keyword);
     List<ArticleDtoForList> searchArticlesBYCategorie(String category);

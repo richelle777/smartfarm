@@ -23,7 +23,7 @@ public class ArticleRestController {
     private IArticle iArticle;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ArticleDtoForList>> getAllArticles() {
+    public ResponseEntity<List<ArticleDto>> getAllArticles() {
         return ResponseEntity.ok(iArticle.listArticles());
     }
 
