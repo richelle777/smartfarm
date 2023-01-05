@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/AuthentifPublicRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/repository/AuthPublicRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/IAuthPublic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/AuthPublicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/entities/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/entities/Categorie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +20,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
