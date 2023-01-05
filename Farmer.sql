@@ -2,7 +2,20 @@
 
 -- create database bdsmartfarmer;
 -- use bdsmartfarmer;
+-- DROP TABLE IF EXISTS `railway`;
 use railway;
+DROP TABLE IF EXISTS `CommandeArticle`;
+DROP TABLE IF EXISTS `PaiementCarte`;
+DROP TABLE IF EXISTS `Paiement`;
+DROP TABLE IF EXISTS `Commande`;
+DROP TABLE IF EXISTS `Livraison`;
+DROP TABLE IF EXISTS `Article`;
+DROP TABLE IF EXISTS `Customer`;
+DROP TABLE IF EXISTS `Categorie`;
+DROP TABLE IF EXISTS `Fermier`;
+DROP TABLE IF EXISTS `Localisation`;
+DROP TABLE IF EXISTS `Image`;
+
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE IF NOT EXISTS `article` (
   `id_article` varchar(50) NOT NULL,
@@ -58,6 +71,141 @@ INSERT INTO `categorie` (`id_categorie`, `nom`, `descript`) VALUES
 ('CA0006', 'Sucres & Produits Sucrés', 'Permet le bon fonctionnement des muscles et du cerveau'),
 ('CA0007', 'Boissons', 'Régularisent la température corporelle');
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandearticle`
+--
+
+DROP TABLE IF EXISTS `commandearticle`;
+CREATE TABLE IF NOT EXISTS `commandearticle` (
+  `quantite` int NOT NULL,
+  `id_article` varchar(50) NOT NULL,
+  `id_commande` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_article`,`id_commande`),
+  KEY `id_commande` (`id_commande`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `commandearticle`
+--
+
+INSERT INTO `commandearticle` (`quantite`, `id_article`, `id_commande`) VALUES
+(1, 'AR0006', 'CO0019'),
+(1, 'AR0007', 'CO0001'),
+(10, 'AR0008', 'CO0019'),
+(3, 'AR0009', 'CO0019'),
+(2, 'AR0010', 'CO0002');
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fermier`
+--
+
+DROP TABLE IF EXISTS `fermier`;
+CREATE TABLE IF NOT EXISTS `fermier` (
+  `id_fermier` varchar(50) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pwd` varchar(255) NOT NULL,
+  `tel` bigint NOT NULL,
+  `id_localisation` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`id_fermier`),
+  KEY `et` (`id_localisation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `fermier`
+--
+
+INSERT INTO `fermier` (`id_fermier`, `nom`, `email`, `pwd`, `tel`, `id_localisation`) VALUES
+('FE0001', 'ABDOULAYE Mohamadou', 'mohamadouabdoulaye@gamil.com', 'abmo237', 699523412, 'LO0004'),
+('FE0002', 'FATIMA Léandre', 'leafati@gmail.com', 'leadash66', 655324567, 'LO0002'),
+('FE0003', 'BATOU Phillipe', 'philbatou@gmail.com', 'hisoka44', 697524856, 'LO0002'),
+('FE0004', 'TATAMO André', 'tatamoandre@yahoo.fr', 'mimi4life', 675224712, 'LO0003'),
+('FE0005', 'TEDONGMO Sylvere', 'sylveretedongmo@gmail.com', 'sylver02', 677834112, 'LO0002'),
+('FE0006', 'ABOMO Patrick', 'patrickabomo@gmail.com', 'inri000', 696532486, 'LO0001'),
+('FE0007', 'SIDIANG Channelle', 'chanellesidiang@yahoo.fr', '10june97', 650023985, 'LO0004'),
+('FE0008', 'NANA Junior', 'juniornana@gmail.com', 'lejunior20', 670234123, 'LO0004'),
+('FE0009', 'MAFOTSING Paloma', 'palomamafotsing@gmail.com', 'pal0maf0', 693552187, 'LO0002'),
+('FE0010', 'tonfack', 'tonfacknom@gmail.com', 'tfk00', 655244043, 'LO0001'),
+('FE0011', 'sonfack', 'sonfacknom@gmail.com', 'sfk01', 655244043, 'LO0002'),
+('FE0012', 'donfack', 'donfacknom@gmail.com', 'dfk02', 655244043, 'LO0003'),
+('FE0013', 'donkeng', 'donkengnom@gmail.com', 'dfg03', 655244043, 'LO0004'),
+('FE0014', 'nguimfack', 'nguimfacknom@gmail.com', 'ngf04', 655244043, 'LO0001'),
+('FE0015', 'nanfack', 'nanfacknom@gmail.com', 'nfk05', 655244043, 'LO0002'),
+('FE0016', 'djifack', 'djifacknom@gmail.com', 'dfk06', 655244043, 'LO0003'),
+('FE0017', 'tsafack', 'tsafacknom@gmail.com', 'tsfk07', 655244043, 'LO0002'),
+('FE0018', 'nanfack', 'nanfacknom@gmail.com', 'nfk08', 655244043, 'LO0003'),
+('FE0019', 'tsolefack', 'tsolefacknom@gmail.com', 'tslk09', 655244043, 'LO0004'),
+('FE0020', 'MPONO', 'mpono@gmail.com', 'noname06', 694514819, 'LO0002'),
+('FE0021', 'Nguetsop Martin', 'martinnguetsop@yahoo.fr', 'martinnguetsop', 655147658, 'LO0001'),
+('FE0022', 'Oumarou Kabir', 'oumaroukabir@gmail.com', 'oumaroukabir', 699987382, 'LO0003'),
+('FE0023', 'Ewane Bertrand', 'ewanebertrand@gmail.com', 'ewanebertrand', 680146297, 'LO0002'),
+('FE0024', 'Kouamou Jean', 'jeankouamou@gmail.com', 'kouamoujean', 697852301, 'LO0002'),
+('FE0025', 'Omgba Laura', 'omgbalaura@yahoo.com', 'lauraomgba', 698745214, 'LO0001'),
+('FE0026', 'Mbida Estelle', 'estellembida@gmail.com', 'estellembida', 693587100, 'LO0004'),
+('FE0027', 'Ndoum Gabriel', 'ndoumgabriel@yahoo.fr', 'gabrielndoum', 675498526, 'LO0001'),
+('FE0028', 'Mba Chancellin', 'chancellinmba@yahoo.com', 'chancellinmba', 681523974, 'LO0002'),
+('FE0029', 'Biyina Robert', 'bihinarobert@gmail.com', 'biyinarobert', 690327169, 'LO0003'),
+('FE0030', 'Ngadio Soumira', 'soumirangadio@yahoo.fr', 'ngadiosoumira', 698710478, 'LO0001');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `image`
+--
+
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE IF NOT EXISTS `image` (
+  `id_image` varchar(50) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `url_thumbnail` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_image`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `image`
+--
+
+INSERT INTO `image` (`id_image`, `url`, `url_thumbnail`) VALUES
+('IM0001', '', ''),
+('IM0006', '', ''),
+('IM0007', '', ''),
+('IM0008', '', ''),
+('IM0009', '', ''),
+('IM0010', '', '');
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `paiement`
+--
+
+DROP TABLE IF EXISTS `paiement`;
+CREATE TABLE IF NOT EXISTS `paiement` (
+  `id_paiement` varchar(50) NOT NULL,
+  `montant` bigint NOT NULL,
+  `id_commande` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_paiement`),
+  KEY `id_commande` (`id_commande`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `paiement`
+--
+
+INSERT INTO `paiement` (`id_paiement`, `montant`, `id_commande`) VALUES
+('PA0001', 2600, 'CO0001'),
+('PA0002', 900, 'CO0002'),
+('PA0019', 3300, 'CO0019');
+
+
 -- --------------------------------------------------------
 
 --
@@ -92,28 +240,71 @@ INSERT INTO `commande` (`id_commande`, `date_com`, `livre`, `statut_commande`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commandearticle`
+-- Structure de la table `livraison`
 --
 
-DROP TABLE IF EXISTS `commandearticle`;
-CREATE TABLE IF NOT EXISTS `commandearticle` (
-  `quantite` int NOT NULL,
-  `id_article` varchar(50) NOT NULL,
-  `id_commande` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_article`,`id_commande`),
-  KEY `id_commande` (`id_commande`)
+DROP TABLE IF EXISTS `livraison`;
+CREATE TABLE IF NOT EXISTS `livraison` (
+  `id_livraison` varchar(50) NOT NULL,
+  `date_liv` date DEFAULT NULL,
+  `statut_livraison` enum('Livré','Non livré','Annulé') DEFAULT NULL,
+  `id_localisation` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_livraison`),
+  KEY `id_localisation` (`id_localisation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `commandearticle`
+-- Déchargement des données de la table `livraison`
 --
 
-INSERT INTO `commandearticle` (`quantite`, `id_article`, `id_commande`) VALUES
-(1, 'AR0006', 'CO0019'),
-(1, 'AR0007', 'CO0001'),
-(10, 'AR0008', 'CO0019'),
-(3, 'AR0009', 'CO0019'),
-(2, 'AR0010', 'CO0002');
+INSERT INTO `livraison` (`id_livraison`, `date_liv`, `statut_livraison`, `id_localisation`) VALUES
+('LI0001', '2022-01-05', 'Livré', 'LO0003'),
+('LI0002', '2022-01-09', 'Livré', 'LO0002'),
+('LI0003', '2022-01-15', 'Livré', 'LO0001'),
+('LI0004', '2022-09-18', 'Annulé', 'LO0002'),
+('LI0005', '2022-05-13', 'Annulé', 'LO0004'),
+('LI0006', '2022-02-26', 'Livré', 'LO0003'),
+('LI0007', '2022-10-27', 'Non livré', 'LO0001'),
+('LI0008', '2022-06-18', 'Livré', 'LO0004'),
+('LI0009', '2022-06-04', 'Livré', 'LO0002'),
+('LI0010', '2022-03-14', 'Livré', 'LO0003'),
+('LI0011', '2022-04-29', 'Non livré', 'LO0001'),
+('LI0012', '2022-07-07', 'Livré', 'LO0003'),
+('LI0013', '2022-10-29', 'Livré', 'LO0002'),
+('LI0014', '2022-06-10', 'Annulé', 'LO0002'),
+('LI0015', '2022-06-10', 'Livré', 'LO0004'),
+('LI0016', '2022-09-20', 'Livré', 'LO0003'),
+('LI0017', '2022-10-08', 'Livré', 'LO0002'),
+('LI0018', '2022-11-02', 'Non livré', 'LO0004');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `localisation`
+--
+
+DROP TABLE IF EXISTS `localisation`;
+CREATE TABLE IF NOT EXISTS `localisation` (
+  `id_localisation` varchar(50) NOT NULL,
+  `residence` varchar(255) DEFAULT NULL,
+  `ville` varchar(255) DEFAULT 'Yaoundé',
+  `pays` varchar(255) DEFAULT 'Cameroun',
+  `region` varchar(255) DEFAULT 'Centre',
+  `longitude` varchar(255) DEFAULT NULL,
+  `latitude` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_localisation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `localisation`
+--
+
+INSERT INTO `localisation` (`id_localisation`, `residence`, `ville`, `pays`, `region`, `longitude`, `latitude`) VALUES
+('LO0001', 'Eyang', 'Lobo', 'Cameroun', 'Centre', '11.390734', '3.884117'),
+('LO0002', 'Carrefour MEEC', 'Yaounde', 'Cameroun', 'Centre', '11.485111', '3.869552'),
+('LO0003', 'Carrefour Nkolbisson', 'Yaounde', 'Cameroun', 'Centre', '11.454283', '3.872730'),
+('LO0004', 'Rue des écoles', 'Douala', 'Cameroun', 'Littoral', '9.692649', '4.045433');
+
 
 -- --------------------------------------------------------
 
@@ -196,178 +387,6 @@ INSERT INTO `customer` (`id_client`, `nom`, `email`, `mdp`, `telephone`) VALUES
 ('CU2988', 'boyboy', 'boyboynom@gmail.com', 'boy251', 655244041),
 ('CU2998', 'chris', 'chrisnom@gmail.com', 'chris1', 655244041),
 ('CU3009', 'baba', 'babanom@gmail.com', 'baba1', 655244041);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `fermier`
---
-
-DROP TABLE IF EXISTS `fermier`;
-CREATE TABLE IF NOT EXISTS `fermier` (
-  `id_fermier` varchar(50) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `pwd` varchar(255) NOT NULL,
-  `tel` bigint NOT NULL,
-  `id_localisation` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  PRIMARY KEY (`id_fermier`),
-  KEY `et` (`id_localisation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `fermier`
---
-
-INSERT INTO `fermier` (`id_fermier`, `nom`, `email`, `pwd`, `tel`, `id_localisation`) VALUES
-('FE0001', 'ABDOULAYE Mohamadou', 'mohamadouabdoulaye@gamil.com', 'abmo237', 699523412, 'LO0004'),
-('FE0002', 'FATIMA Léandre', 'leafati@gmail.com', 'leadash66', 655324567, 'LO0002'),
-('FE0003', 'BATOU Phillipe', 'philbatou@gmail.com', 'hisoka44', 697524856, 'LO0002'),
-('FE0004', 'TATAMO André', 'tatamoandre@yahoo.fr', 'mimi4life', 675224712, 'LO0003'),
-('FE0005', 'TEDONGMO Sylvere', 'sylveretedongmo@gmail.com', 'sylver02', 677834112, 'LO0002'),
-('FE0006', 'ABOMO Patrick', 'patrickabomo@gmail.com', 'inri000', 696532486, 'LO0001'),
-('FE0007', 'SIDIANG Channelle', 'chanellesidiang@yahoo.fr', '10june97', 650023985, 'LO0004'),
-('FE0008', 'NANA Junior', 'juniornana@gmail.com', 'lejunior20', 670234123, 'LO0004'),
-('FE0009', 'MAFOTSING Paloma', 'palomamafotsing@gmail.com', 'pal0maf0', 693552187, 'LO0002'),
-('FE0010', 'tonfack', 'tonfacknom@gmail.com', 'tfk00', 655244043, 'LO0001'),
-('FE0011', 'sonfack', 'sonfacknom@gmail.com', 'sfk01', 655244043, 'LO0002'),
-('FE0012', 'donfack', 'donfacknom@gmail.com', 'dfk02', 655244043, 'LO0003'),
-('FE0013', 'donkeng', 'donkengnom@gmail.com', 'dfg03', 655244043, 'LO0004'),
-('FE0014', 'nguimfack', 'nguimfacknom@gmail.com', 'ngf04', 655244043, 'LO0001'),
-('FE0015', 'nanfack', 'nanfacknom@gmail.com', 'nfk05', 655244043, 'LO0002'),
-('FE0016', 'djifack', 'djifacknom@gmail.com', 'dfk06', 655244043, 'LO0003'),
-('FE0017', 'tsafack', 'tsafacknom@gmail.com', 'tsfk07', 655244043, 'LO0002'),
-('FE0018', 'nanfack', 'nanfacknom@gmail.com', 'nfk08', 655244043, 'LO0003'),
-('FE0019', 'tsolefack', 'tsolefacknom@gmail.com', 'tslk09', 655244043, 'LO0004'),
-('FE0020', 'MPONO', 'mpono@gmail.com', 'noname06', 694514819, 'LO0002'),
-('FE0021', 'Nguetsop Martin', 'martinnguetsop@yahoo.fr', 'martinnguetsop', 655147658, 'LO0001'),
-('FE0022', 'Oumarou Kabir', 'oumaroukabir@gmail.com', 'oumaroukabir', 699987382, 'LO0003'),
-('FE0023', 'Ewane Bertrand', 'ewanebertrand@gmail.com', 'ewanebertrand', 680146297, 'LO0002'),
-('FE0024', 'Kouamou Jean', 'jeankouamou@gmail.com', 'kouamoujean', 697852301, 'LO0002'),
-('FE0025', 'Omgba Laura', 'omgbalaura@yahoo.com', 'lauraomgba', 698745214, 'LO0001'),
-('FE0026', 'Mbida Estelle', 'estellembida@gmail.com', 'estellembida', 693587100, 'LO0004'),
-('FE0027', 'Ndoum Gabriel', 'ndoumgabriel@yahoo.fr', 'gabrielndoum', 675498526, 'LO0001'),
-('FE0028', 'Mba Chancellin', 'chancellinmba@yahoo.com', 'chancellinmba', 681523974, 'LO0002'),
-('FE0029', 'Biyina Robert', 'bihinarobert@gmail.com', 'biyinarobert', 690327169, 'LO0003'),
-('FE0030', 'Ngadio Soumira', 'soumirangadio@yahoo.fr', 'ngadiosoumira', 698710478, 'LO0001');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `image`
---
-
-DROP TABLE IF EXISTS `image`;
-CREATE TABLE IF NOT EXISTS `image` (
-  `id_image` varchar(50) NOT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `url_thumbnail` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_image`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `image`
---
-
-INSERT INTO `image` (`id_image`, `url`, `url_thumbnail`) VALUES
-('IM0001', '', ''),
-('IM0006', '', ''),
-('IM0007', '', ''),
-('IM0008', '', ''),
-('IM0009', '', ''),
-('IM0010', '', '');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `livraison`
---
-
-DROP TABLE IF EXISTS `livraison`;
-CREATE TABLE IF NOT EXISTS `livraison` (
-  `id_livraison` varchar(50) NOT NULL,
-  `date_liv` date DEFAULT NULL,
-  `statut_livraison` enum('Livré','Non livré','Annulé') DEFAULT NULL,
-  `id_localisation` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_livraison`),
-  KEY `id_localisation` (`id_localisation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `livraison`
---
-
-INSERT INTO `livraison` (`id_livraison`, `date_liv`, `statut_livraison`, `id_localisation`) VALUES
-('LI0001', '2022-01-05', 'Livré', 'LO0003'),
-('LI0002', '2022-01-09', 'Livré', 'LO0002'),
-('LI0003', '2022-01-15', 'Livré', 'LO0001'),
-('LI0004', '2022-09-18', 'Annulé', 'LO0002'),
-('LI0005', '2022-05-13', 'Annulé', 'LO0004'),
-('LI0006', '2022-02-26', 'Livré', 'LO0003'),
-('LI0007', '2022-10-27', 'Non livré', 'LO0001'),
-('LI0008', '2022-06-18', 'Livré', 'LO0004'),
-('LI0009', '2022-06-04', 'Livré', 'LO0002'),
-('LI0010', '2022-03-14', 'Livré', 'LO0003'),
-('LI0011', '2022-04-29', 'Non livré', 'LO0001'),
-('LI0012', '2022-07-07', 'Livré', 'LO0003'),
-('LI0013', '2022-10-29', 'Livré', 'LO0002'),
-('LI0014', '2022-06-10', 'Annulé', 'LO0002'),
-('LI0015', '2022-06-10', 'Livré', 'LO0004'),
-('LI0016', '2022-09-20', 'Livré', 'LO0003'),
-('LI0017', '2022-10-08', 'Livré', 'LO0002'),
-('LI0018', '2022-11-02', 'Non livré', 'LO0004');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `localisation`
---
-
-DROP TABLE IF EXISTS `localisation`;
-CREATE TABLE IF NOT EXISTS `localisation` (
-  `id_localisation` varchar(50) NOT NULL,
-  `residence` varchar(255) DEFAULT NULL,
-  `ville` varchar(255) DEFAULT 'Yaoundé',
-  `pays` varchar(255) DEFAULT 'Cameroun',
-  `region` varchar(255) DEFAULT 'Centre',
-  `longitude` varchar(255) DEFAULT NULL,
-  `latitude` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_localisation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `localisation`
---
-
-INSERT INTO `localisation` (`id_localisation`, `residence`, `ville`, `pays`, `region`, `longitude`, `latitude`) VALUES
-('LO0001', 'Eyang', 'Lobo', 'Cameroun', 'Centre', '11.390734', '3.884117'),
-('LO0002', 'Carrefour MEEC', 'Yaounde', 'Cameroun', 'Centre', '11.485111', '3.869552'),
-('LO0003', 'Carrefour Nkolbisson', 'Yaounde', 'Cameroun', 'Centre', '11.454283', '3.872730'),
-('LO0004', 'Rue des écoles', 'Douala', 'Cameroun', 'Littoral', '9.692649', '4.045433');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `paiement`
---
-
-DROP TABLE IF EXISTS `paiement`;
-CREATE TABLE IF NOT EXISTS `paiement` (
-  `id_paiement` varchar(50) NOT NULL,
-  `montant` bigint NOT NULL,
-  `id_commande` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_paiement`),
-  KEY `id_commande` (`id_commande`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `paiement`
---
-
-INSERT INTO `paiement` (`id_paiement`, `montant`, `id_commande`) VALUES
-('PA0001', 2600, 'CO0001'),
-('PA0002', 900, 'CO0002'),
-('PA0019', 3300, 'CO0019');
 
 -- --------------------------------------------------------
 
