@@ -32,4 +32,10 @@ public class CommandeRestController {
         iCommande.saveCommande(create);
     }
 
+    @PostMapping(value = "/{id}/update/{state}")
+    public void updateStatutCommande(@PathVariable String id, @PathVariable String state) {
+        CommandeRestController.log.info("Mise à jour - Statut de la commande : " + id);
+        iCommande.updateStatutCommande(id, state);
+    }
+
 }

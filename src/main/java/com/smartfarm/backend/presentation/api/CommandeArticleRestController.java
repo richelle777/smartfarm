@@ -3,6 +3,7 @@ package com.smartfarm.backend.presentation.api;
 import com.smartfarm.backend.model.dto.ArticleDto;
 import com.smartfarm.backend.model.dto.ArticleDtoForList;
 import com.smartfarm.backend.model.dto.CommandearticleDto;
+import com.smartfarm.backend.model.dto.Produit;
 import com.smartfarm.backend.service.IArticle;
 import com.smartfarm.backend.service.ICommande;
 import com.smartfarm.backend.service.ICommandearticle;
@@ -40,5 +41,11 @@ public class CommandeArticleRestController {
     @GetMapping("/{qte}/{id}/update")
     public int updateCommandeArticle(@PathVariable Integer qte, @PathVariable String id){
         return iCommandearticle.UpdateCommandeArticle(qte, id);
+    }
+
+    @GetMapping("/commande/{id}/data")
+    public ResponseEntity<List<Produit>> getListArticleByCommande(@PathVariable String id) {
+        CommandeArticleRestController.log.info("Les artiles de la commande : " + id);
+        return ResponseEntity.ok(iCommandearticle.listArticleByCommande(id));
     }
 }

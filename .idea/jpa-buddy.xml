@@ -2,5 +2,7 @@
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="c7c60c19-0cfb-4155-9de8-6deb9b25966f" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/com/smartfarm/backend/model/entities" />
   </component>
 </project>
