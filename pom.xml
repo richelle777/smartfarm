@@ -16,12 +16,8 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
-<<<<<<< Updated upstream
-		<org.projectlombok.version>1.18.0</org.projectlombok.version>
-=======
 <!--		1.18.4-->
 		<org.projectlombok.version>1.18.4</org.projectlombok.version>
->>>>>>> Stashed changes
 	</properties>
 	<dependencies>
 		<dependency>

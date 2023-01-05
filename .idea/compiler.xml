@@ -14,8 +14,6 @@
         </processorPath>
         <module name="backend" />
       </profile>
-<<<<<<< Updated upstream
-=======
       <profile name="Annotation profile for smartFarm" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -28,15 +26,16 @@
         </processorPath>
         <module name="smartFarm" />
       </profile>
->>>>>>> Stashed changes
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="backend" target="1.8" />
+      <module name="smartFarm" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="backend" options="-parameters" />
+      <module name="smartFarm" options="-parameters" />
     </option>
   </component>
 </project>
