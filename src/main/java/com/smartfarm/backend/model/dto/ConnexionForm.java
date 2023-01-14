@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ImageDto {
-    private String id;
-    private String name;
-    private byte[] data;
+public class ConnexionForm {
+    private String email;
+    private String password;
 }

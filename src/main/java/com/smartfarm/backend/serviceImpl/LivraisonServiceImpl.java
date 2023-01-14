@@ -19,16 +19,12 @@ public class LivraisonServiceImpl implements ILivraison {
     LivraisonRepository livraisonRepository;
 
     @Autowired
-    LocalisationMapper localisationMapper;
-
-    @Autowired
     LivraisonMapper livraisonMapper;
 
     @Override
     public List<LivraisonDto> listLivraison() {
         List<LivraisonDto> livraisonDtos = livraisonRepository.findAll().stream().map( livraison -> {
             LivraisonDto livraisonDto = livraisonMapper.toDto(livraison);
-            livraisonDto.setLocalisationDto(localisationMapper.toDto(livraison.getLocalisation()));
             return livraisonDto;
         })
                 .collect(Collectors.toList());
@@ -39,7 +35,6 @@ public class LivraisonServiceImpl implements ILivraison {
     public LivraisonDto findLivraisonById(String id) {
         if(livraisonRepository.findById(id).isPresent()){
             LivraisonDto livraisonDto = livraisonMapper.toDto(livraisonRepository.findById(id).get());
-            livraisonDto.setLocalisationDto(localisationMapper.toDto(livraisonRepository.findById(id).get().getLocalisation()));
             return livraisonDto;
         }
         return null;
@@ -50,17 +45,15 @@ public class LivraisonServiceImpl implements ILivraison {
         return livraisonRepository.findByStatutLivraison(state).get().stream()
                 .map(livraison -> {
                     LivraisonDto livraisonDto = livraisonMapper.toDto(livraison);
-                    livraisonDto.setLocalisationDto(localisationMapper.toDto(livraison.getLocalisation()));
                     return livraisonDto;
                 })
                 .collect(Collectors.toList());
     }
 
     @Override
-    public LivraisonDto updateOrderDelivery(LivraisonDto livraisonDto, String state) {
-        Livraison livraison = livraisonRepository.findById(livraisonDto.getId()).get();
-        livraisonDto.setStatutLivraison(state);
-        livraisonMapper.copy(livraisonDto, livraison);
-        return livraisonMapper.toDto(livraisonRepository.save(livraison));
+    public String updateOrderDelivery(String id, String state) {
+        Livraison livraison = livraisonRepository.findById(id).get();
+        livraisonRepository.save(livraison);
+        return "Mise à jour du statut de livraison à : " + state;
     }
 }

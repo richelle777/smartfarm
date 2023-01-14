@@ -1,9 +1,6 @@
 package com.smartfarm.backend.presentation.api;
 
-import com.smartfarm.backend.model.dto.ArticleDto;
-import com.smartfarm.backend.model.dto.ArticleDtoForList;
 import com.smartfarm.backend.model.dto.CategorieDto;
-import com.smartfarm.backend.service.IArticle;
 import com.smartfarm.backend.service.ICategorie;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categorie")
+@RequestMapping("/api/category")
 @Slf4j
 public class CategorieRestController {
     @Autowired
@@ -25,9 +22,5 @@ public class CategorieRestController {
     @GetMapping("/all")
     public ResponseEntity<List<CategorieDto>> getAllCategories() {
         return ResponseEntity.ok(iCategorie.listCategories());
-    }
-    @GetMapping("/{nom}/data")
-    public ResponseEntity<CategorieDto> getCategorieByNom(@PathVariable String nom){
-        return ResponseEntity.ok(iCategorie.searchCategorieDtoByNom(nom));
     }
 }

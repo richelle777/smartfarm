@@ -1,13 +1,9 @@
 package com.smartfarm.backend.serviceImpl;
 
-import com.smartfarm.backend.mapper.ArticleMapper;
 import com.smartfarm.backend.mapper.CommandearticleIdMapper;
 import com.smartfarm.backend.mapper.CommandearticleMapper;
-import com.smartfarm.backend.model.dto.ArticleDto;
-import com.smartfarm.backend.model.dto.ArticleDtoForList;
 import com.smartfarm.backend.model.dto.CommandearticleDto;
 import com.smartfarm.backend.model.dto.Produit;
-import com.smartfarm.backend.repository.ArticleRepository;
 import com.smartfarm.backend.repository.CommandearticleRepository;
 import com.smartfarm.backend.service.IArticle;
 import com.smartfarm.backend.service.ICommandearticle;
@@ -16,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,9 +23,6 @@ public class CommandearticleServiceImpl implements ICommandearticle {
 
     @Autowired
     CommandearticleMapper commandearticleMapper;
-
-    @Autowired
-    CommandearticleIdMapper commandearticleIdMapper;
 
     @Autowired
     IArticle iArticle;
@@ -47,7 +39,6 @@ public class CommandearticleServiceImpl implements ICommandearticle {
                 })
                 .collect(Collectors.toList());
     }
-
 
     @Override
     public String saveCommandeArticle(CommandearticleDto commandearticleDto) {
@@ -74,9 +65,7 @@ public class CommandearticleServiceImpl implements ICommandearticle {
     @Override
     public List<CommandearticleDto> listCommandeArticles() {
         List<CommandearticleDto> commandearticleDtos = commandearticleRepository.findAll().stream().map(commande ->{
-           CommandearticleDto commandearticleDto = commandearticleMapper.toDto(commande);
-            System.out.println(commandearticleDto);
-            commandearticleDto.setId(commande.getId());
+            CommandearticleDto commandearticleDto = commandearticleMapper.toDto(commande);
             return commandearticleDto;
         }).collect(Collectors.toList());
         return commandearticleDtos;

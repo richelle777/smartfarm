@@ -18,22 +18,32 @@ public class LocalisationServiceImpl implements ILocalisation {
     LocalisationMapper localisationMapper;
 
     @Override
-    public String saveLocalisation(LocalisationDto localisationDto) {
-        if (localisationRepository.findById(localisationDto.getId()).isPresent()){
-            return null;
+    public String save(LocalisationDto localisationDto) {
+        //Function to create a new id for the localisation
+        Boolean isIdNotNew = true;
+        String id = "";
+        while (isIdNotNew){
+            long code = Math.round(Math.random()* 10000);
+            id = "AR" + code;
+            if (!localisationRepository.existsById(id))
+                isIdNotNew = false;
         }
-        return localisationRepository.save(localisationMapper.toEntity(localisationDto)).getId();
+        localisationDto.setId(id);
+        localisationRepository.save(localisationMapper.toEntity(localisationDto));
+        return "Enregistrement effectué avec succés";
     }
 
     @Override
-    public LocalisationDto updateLocalisation(LocalisationDto localisationDto) {
+    public String update(LocalisationDto localisationDto) {
         Localisation localisation = localisationRepository.findById(localisationDto.getId()).get();
         localisationMapper.copy(localisationDto, localisation);
-        return localisationMapper.toDto(localisationRepository.save(localisation));
+        localisationRepository.save(localisation);
+        return "Mise à jour effectué avec succés";
     }
 
     @Override
-    public void deleteLocalisation(LocalisationDto localisationDto) {
-        localisationRepository.delete(localisationMapper.toEntity(localisationDto));
+    public String delete(String id) {
+        localisationRepository.deleteById(id);
+        return "Suppression effectué avec succés";
     }
 }
