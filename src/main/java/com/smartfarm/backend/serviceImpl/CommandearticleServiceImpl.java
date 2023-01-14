@@ -74,7 +74,6 @@ public class CommandearticleServiceImpl implements ICommandearticle {
     @Override
     public List<CommandearticleDto> listCommandeArticles() {
         List<CommandearticleDto> commandearticleDtos = commandearticleRepository.findAll().stream().map(commande ->{
-            System.out.println(commande);
            CommandearticleDto commandearticleDto = commandearticleMapper.toDto(commande);
             System.out.println(commandearticleDto);
             commandearticleDto.setId(commande.getId());

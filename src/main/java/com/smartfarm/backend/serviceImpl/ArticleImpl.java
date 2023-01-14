@@ -93,7 +93,6 @@ public class ArticleImpl implements IArticle{
     @Override
     public List<ArticleDtoForList> searchArticlesBYCategorie(String category) {
         List<ArticleDtoForList> articleDtos = articleRepository.findArticleByCategorie(category).stream().map(article ->{
-            System.out.println(article);
             ArticleDtoForList articleDto = articleForListMapper.toDto(article);
             articleDto.setImageDto(imageMapper.toDto(article.getImage()));
             return articleDto;
