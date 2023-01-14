@@ -20,16 +20,20 @@ public class CommandeRestController {
 
     @GetMapping("/all")
     public ResponseEntity<List<CommandeDto>> getAllCommandes() {
-
-        System.out.println(iCommande.listCommandes());
+        CommandeRestController.log.info("Liste des commandes");
         return ResponseEntity.ok(iCommande.listCommandes());
     }
 
     @PostMapping(value = "/save")
     public void enregistrer(@RequestBody CommandeDto create){
-        System.out.println(create);
         CommandeRestController.log.info("enregistrer-une-commande");
         iCommande.saveCommande(create);
+    }
+
+    @GetMapping("/{id}/update/state/{state}")
+    public ResponseEntity<String> updateStateCommande(@PathVariable String id, @PathVariable String state) {
+        CommandeRestController.log.info("Mise à jour statut de la commande d'id : " + id);
+        return ResponseEntity.ok(iCommande.updateStatut(id, state));
     }
 
 }

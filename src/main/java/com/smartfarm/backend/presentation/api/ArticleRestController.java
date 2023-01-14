@@ -1,17 +1,14 @@
 package com.smartfarm.backend.presentation.api;
 
 import com.smartfarm.backend.model.dto.ArticleDto;
-import com.smartfarm.backend.model.dto.ArticleDtoForList;
 import com.smartfarm.backend.service.IArticle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -27,18 +24,31 @@ public class ArticleRestController {
         return ResponseEntity.ok(iArticle.listArticles());
     }
 
-    @GetMapping("/{nom}/data")
-    public ResponseEntity<ArticleDtoForList> getArticleByNom(@PathVariable String nom){
-        return ResponseEntity.ok(iArticle.searchArticleByNom(nom));
-    }
-
-//    @GetMapping("/{nom}/dataAll")
-//    public ResponseEntity<List<ArticleDtoForList>> getArticleByKeyword(@PathVariable String keyword){
-//        return ResponseEntity.ok(iArticle.searchArticlesBYkeyword(keyword));
-//    }
 
     @GetMapping("/{category}/searchByCategorie")
+<<<<<<< Updated upstream
     public  ResponseEntity<List<ArticleDtoForList>> searchArticle(@Param("category") String category){
+=======
+    public  ResponseEntity<List<ArticleDto>> searchArticle(@PathVariable String category){
+>>>>>>> Stashed changes
         return ResponseEntity.ok(iArticle.searchArticlesBYCategorie(category));
+    }
+
+    @PostMapping(value = "/save")
+    public ResponseEntity<String> saveArticle(@RequestParam("articleDto") String articleDto, @RequestParam("file") MultipartFile file) throws IOException {
+        ArticleRestController.log.info("Enregistrement de l'article");
+        return ResponseEntity.ok(iArticle.save(articleDto, file));
+    }
+
+    @PostMapping(value = "/update")
+    public ResponseEntity<String> updateArticle(@RequestParam("articleDto") String articleDto, @RequestParam("file") MultipartFile file) throws IOException {
+        ArticleRestController.log.info("Mise à jour de l'article");
+        return ResponseEntity.ok(iArticle.update(articleDto, file));
+    }
+
+    @GetMapping("/{id}/delete")
+    public  ResponseEntity<String> deleteArticle(@PathVariable String id){
+        ArticleRestController.log.info("Suppréssion de l'article");
+        return ResponseEntity.ok(iArticle.delete(id));
     }
 }

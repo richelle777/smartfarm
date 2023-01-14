@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "image")
 @Entity
@@ -19,9 +16,15 @@ public class Image {
     @Column(name = "id_image", nullable = false)
     private String id;
 
-    @Column(name = "url")
-    private String url;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "url_thumbnail")
-    private String urlThumbnail;
+    @Column(name = "data", nullable = false)
+    @Lob
+    private byte[] data;
+
+    public Image(String name, byte[]data){
+        this.name = name;
+        this.data = data;
+    }
 }

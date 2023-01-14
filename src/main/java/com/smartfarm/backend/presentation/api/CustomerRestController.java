@@ -22,9 +22,9 @@ public class CustomerRestController {
     @Autowired
     private ICommande iCommande;
 
-//    @GetMapping("/{id}/commande/history")
-//    public ResponseEntity<Map<CommandeDto, List<Produit>>> getHistoriqueCommandeCustomer(@PathVariable String id) {
-//        CustomerRestController.log.info("Historique des commandes de l'user id : " + id);
-//        return ResponseEntity.ok(iCommande.historiqueCommandeClient(id));
-//    }
+    @GetMapping("/{id}/commande/history")
+    public ResponseEntity<Map<CommandeDto, List<Produit>>> getHistoriqueCommandeCustomer(@PathVariable String id) {
+        CustomerRestController.log.info("Historique des commandes de l'user id : " + id);
+        return ResponseEntity.ok(iCommande.historiqueCommandeClient(id));
+    }
 }

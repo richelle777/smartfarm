@@ -17,4 +17,5 @@ public class CommandeDto {
     private Boolean livre = false;
     private String statutCommande;
     private CustomerDto clientDto;
+    private LivraisonDto livraisonDto;
 }

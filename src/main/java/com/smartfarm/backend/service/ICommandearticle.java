@@ -1,6 +1,5 @@
 package com.smartfarm.backend.service;
 
-import com.smartfarm.backend.model.dto.ArticleDtoForList;
 import com.smartfarm.backend.model.dto.CommandearticleDto;
 import com.smartfarm.backend.model.dto.Produit;
 

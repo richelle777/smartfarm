@@ -1,5 +1,6 @@
 package com.smartfarm.backend.presentation.api;
 
+import com.smartfarm.backend.model.dto.ConnexionForm;
 import com.smartfarm.backend.model.dto.FermierDto;
 import com.smartfarm.backend.model.dto.LocalisationDto;
 import com.smartfarm.backend.service.IFermier;
@@ -17,13 +18,11 @@ public class FermierRestController {
     @Autowired
     private IFermier iFermier;
 
-    @Autowired
-    private ILocalisation iLocalisation;
 
-    @PostMapping(value = "/localisation/save")
+    @PostMapping(value = "/save/localisation")
     public void saveLocalisation(@RequestBody LocalisationDto localisationDto) {
         FermierRestController.log.info("Enregistrement - Localisation");
-        iLocalisation.saveLocalisation(localisationDto);
+        iFermier.saveLocalisation(localisationDto);
     }
 
     @GetMapping("/{id}/data")
@@ -32,10 +31,21 @@ public class FermierRestController {
         return ResponseEntity.ok(iFermier.findFermierById(id));
     }
 
-    @PostMapping(value = "/fermier/{id}/update")
-    public void updateFermier(@PathVariable String id) {
+    @PostMapping(value = "/{id}/update")
+    public ResponseEntity<String> updateFermier(@PathVariable String id, @RequestBody FermierDto fermierDto) {
         FermierRestController.log.info("Mise à jour - Fermier : " + id);
-        FermierDto fermierDto = iFermier.findFermierById(id);
-        iFermier.updateFermier(fermierDto);
+        return ResponseEntity.ok(iFermier.updateFermier(fermierDto));
+    }
+
+    @PostMapping(value = "/createaccount")
+    public ResponseEntity<String> createAccount(@RequestBody FermierDto fermierDto) {
+        FermierRestController.log.info("Création d'un compte fermier");
+        return ResponseEntity.ok(iFermier.save(fermierDto));
+    }
+
+    @PostMapping(value = "/signin")
+    public ResponseEntity<String> authentification(@RequestBody ConnexionForm connexionForm) {
+        FermierRestController.log.info("Connexion au compte fermier d'email : " + connexionForm.getEmail());
+        return ResponseEntity.ok(iFermier.authentification(connexionForm));
     }
 }

@@ -9,5 +9,5 @@ public interface ILivraison {
     List<LivraisonDto> listLivraison();
     LivraisonDto findLivraisonById(String id);
     List<LivraisonDto> findLivraisonByStatut(String state);
-    LivraisonDto updateOrderDelivery(LivraisonDto livraisonDto, String state);
+    String updateOrderDelivery(String id, String state);
 }

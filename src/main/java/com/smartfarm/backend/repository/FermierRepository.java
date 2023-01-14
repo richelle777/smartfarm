@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface FermierRepository extends JpaRepository<Fermier, String> {
     Optional<Fermier> findById(String id);
+    Optional<Fermier> findByEmail(String email);
+    boolean existsByEmail(String email);
 }
