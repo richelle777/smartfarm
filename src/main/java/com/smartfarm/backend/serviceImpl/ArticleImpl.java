@@ -35,8 +35,8 @@ public class ArticleImpl implements IArticle{
             ArticleDto articleDto = articleMapper.toDto(article);
 <<<<<<< Updated upstream
             System.out.println(articleDto);
-//            articleDto.setCategorieDto(categorieMapper.toDto(article.getCategorie()));
-//            articleDto.setFermierDto(fermierMapper.toDto(article.getFermier()));
+            articleDto.setCategorieDto(categorieMapper.toDto(article.getCategorie()));
+            articleDto.setFermierDto(fermierMapper.toDto(article.getFermier()));
             articleDto.setImageDto(imageMapper.toDto(article.getImage()));
 =======
 >>>>>>> Stashed changes

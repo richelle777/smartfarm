@@ -1,20 +1,31 @@
--- drop database if exists bdsmartfarmer;
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : sam. 14 jan. 2023 à 10:23
+-- Version du serveur : 8.0.27
+-- Version de PHP : 7.4.26
 
--- create database bdsmartfarmer;
--- use bdsmartfarmer;
--- DROP TABLE IF EXISTS `railway`;
-use railway;
-DROP TABLE IF EXISTS `CommandeArticle`;
-DROP TABLE IF EXISTS `PaiementCarte`;
-DROP TABLE IF EXISTS `Paiement`;
-DROP TABLE IF EXISTS `Commande`;
-DROP TABLE IF EXISTS `Livraison`;
-DROP TABLE IF EXISTS `Article`;
-DROP TABLE IF EXISTS `Customer`;
-DROP TABLE IF EXISTS `Categorie`;
-DROP TABLE IF EXISTS `Fermier`;
-DROP TABLE IF EXISTS `Localisation`;
-DROP TABLE IF EXISTS `Image`;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `bdsmartfarmer`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `article`
+--
 
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE IF NOT EXISTS `article` (
@@ -27,9 +38,9 @@ CREATE TABLE IF NOT EXISTS `article` (
   `id_image` varchar(50) DEFAULT NULL,
   `id_fermier` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_article`),
-  KEY `id_categorie` (`id_categorie`),
-  KEY `id_image` (`id_image`),
-  KEY `id_fermier` (`id_fermier`)
+  KEY `FK5qbslk1ioudummgell60ha69j` (`id_categorie`),
+  KEY `FKmmnu28v0fkpg1q8wwdkp2i4o4` (`id_fermier`),
+  KEY `FKcgjglveh9und0h790a6d3f48k` (`id_image`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -71,6 +82,36 @@ INSERT INTO `categorie` (`id_categorie`, `nom`, `descript`) VALUES
 ('CA0006', 'Sucres & Produits Sucrés', 'Permet le bon fonctionnement des muscles et du cerveau'),
 ('CA0007', 'Boissons', 'Régularisent la température corporelle');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande`
+--
+
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id_commande` varchar(50) NOT NULL,
+  `date_com` date NOT NULL,
+  `livre` tinyint(1) NOT NULL,
+  `statut_commande` enum('Non payé','Payé','En attente','Annulé') NOT NULL,
+  `id_client` varchar(50) DEFAULT NULL,
+  `id_livraison` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_commande`),
+  KEY `FKfli8jhlji7kqjm5dpuey15agd` (`id_client`),
+  KEY `FKaxq0magj1niv0nvq5s7c6vk5s` (`id_livraison`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id_commande`, `date_com`, `livre`, `statut_commande`, `id_client`, `id_livraison`) VALUES
+('CO0001', '2022-09-11', 0, 'Payé', 'CU0108', 'LI0001'),
+('CO0002', '2022-07-04', 0, 'Annulé', 'CU0117', 'LI0002'),
+('CO0003', '2022-11-01', 0, 'En attente', 'CU0105', 'LI0006'),
+('CO0004', '2022-08-16', 0, 'Non payé', 'CU0107', 'LI0007'),
+('CO0016', '2022-10-22', 1, 'Payé', 'CU0120', 'LI0013'),
+('CO0019', '2022-10-02', 1, 'Payé', 'CU0117', 'LI0017');
 
 -- --------------------------------------------------------
 
@@ -98,6 +139,88 @@ INSERT INTO `commandearticle` (`quantite`, `id_article`, `id_commande`) VALUES
 (3, 'AR0009', 'CO0019'),
 (2, 'AR0010', 'CO0002');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE IF NOT EXISTS `customer` (
+  `id_client` varchar(50) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `telephone` bigint NOT NULL,
+  `username` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_client`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `customer`
+--
+
+INSERT INTO `customer` (`id_client`, `nom`, `email`, `mdp`, `telephone`, `username`) VALUES
+('CU0002', 'Ganago Ignacio', 'ignacioganago@gmail.com', 'igniaciogagano', 655489314, ''),
+('CU0003', 'Toko Ekambi', 'ekambi@yahoo.com', 'tokoekambi', 657203694, ''),
+('CU0004', 'Fotsing Gabriel', 'gabrielfotsing@yahoo.com', 'gabrielfosting', 695412358, ''),
+('CU0005', 'Ngah Roland', 'ngahroland@gmail.com', 'ngahroland', 697452586, ''),
+('CU0006', 'Dongmo Salomon', 'salomondongmo@yahoo.fr', 'dongmosalomon', 656680479, ''),
+('CU0007', 'Magne Justine', 'magne.justine@institutsaintjean.org', 'justinemagne', 654200036, ''),
+('CU0008', 'Dipanda Solange', 'solangedipanda@yahoo.fr', 'dipandasolange', 695478899, ''),
+('CU0009', 'Njitap Marcella', 'marcellanjitap@gmail.com', 'njitapmarcella', 656231402, ''),
+('CU0010', 'Bustive Laraison', 'bustivelaraison@gmail.com', 'bustivelaraison', 693254164, ''),
+('CU0011', 'Mindjos Amélie', 'mindjosamelie@yahoo.com', 'mindjosamelie', 655798951, ''),
+('CU0012', 'Kenfack Boris', 'boriskenfack@yahoo.fr', 'boriskenfack', 675486210, ''),
+('CU0013', 'Nadia Morelle', 'morellenadia@gmail.com', 'nadiamorelle', 656120837, ''),
+('CU0014', 'Konlack Cassidy', 'cassidykonlack@gmail.com', 'cassidykonlack', 694752395, ''),
+('CU0015', 'Minsinga Jeff', 'jeffminsinga@gmail.com', 'jeffminsinga', 674016692, ''),
+('CU0016', 'Fotso Badouel', 'fotsobadouel@gmail.com', 'badouelfotso', 691513681, ''),
+('CU0017', 'Ngue Hirna', 'nguehirna@yahoo.com', 'nguehirna', 656893651, ''),
+('CU0018', 'Massing Eva', 'massingeva@gmail.com', 'massingeva', 673846523, ''),
+('CU0019', 'Akono Bernadette', 'bernadetteakono@yahoo.fr', 'bernadetteakono', 678932845, ''),
+('CU0020', 'Melong Elsina', 'elsinamelong@gmail.com', 'melongelsina', 6927418530, ''),
+('CU0101', 'ATANGANA Martin', 'martinatangana@gmail.com', 'atangana101', 699352485, ''),
+('CU0102', 'TINAH Josephine', 'josephinetinah@gmail.com', 'tinah102', 655328456, ''),
+('CU0103', 'TAWAMO Cébastien', 'cebtawamo@gmail.com', 'ceb404', 677524965, ''),
+('CU0104', 'MUSTAFI Al Kelaib', 'kelalmustafi@gmail.com', 'sasuke03', 697481102, ''),
+('CU0105', 'AZEBAZE Olivier', 'olivierazebaze@yahoo.fr', 'badboy197', 650654875, ''),
+('CU0106', 'KENFACK Junior', 'juniorkenfack@gmail.com', 'cr7goat', 670864523, ''),
+('CU0107', 'DONFACK Timothée', 'timotheedonfack@gmail.com', 'ghost33', 690258484, ''),
+('CU0108', 'SIMO Mirabelle', 'mirabellesimo@gmail.com', 'cardib237', 696545423, ''),
+('CU0109', 'KANA Estelle', 'kanaestelle@yahoo.fr', 'kanacoco0000', 677452565, ''),
+('CU0110', 'BOGA Aladin', 'aladinboga@gmail.com', 'bgboga007', 650342696, ''),
+('CU0111', 'PEYO Anastasie', 'anapeyo@gmail.com', 'ana111', 675223654, ''),
+('CU0112', 'DONFACK Isabelle', 'isabelledonfack@ygmail.com', 'ibelle112', 699963254, ''),
+('CU0113', 'DOGMO Teddy', 'dogmoteddy@yahoo.fr', 'teddybear10', 650965326, ''),
+('CU0114', 'BELLA Manuella', 'manubella@gmail.com', 'manubella++', 655232368, ''),
+('CU0115', 'EBENDA Sandrine', 'sandrineebenda@gmail.com', 'sandrychou4', 674513809, ''),
+('CU0116', 'TSAFFACK Franklin', 'tsafackfranklin@yahoo.fr', 'francky06', 655245632, ''),
+('CU0117', 'ZAYO Rick', 'rickross@gmail.com', 'rick.ross', 696541237, ''),
+('CU0118', 'DATCHOUA Patrick', 'patreickdatchoua@gmail.com', 'patpatterson.jr', 697852423, ''),
+('CU0119', 'TEUKAM Andy', 'andyteukam@gmail.com', 'leomessi10', 655863552, ''),
+('CU0120', 'DANDJEU Junior', 'dandjeujr@gmail.com', 'jrdj365', 656338433, ''),
+('CU2011', 'paqueta', 'paquetanom@gmail.com', 'paqet15', 655244043, ''),
+('CU2032', 'bozar', 'bozarnom@gmail.com', 'boza1', 655244041, ''),
+('CU2053', 'aristide', 'aristidenom@gmail.com', 'aris1', 655244041, ''),
+('CU2064', 'malo', 'malonom@gmail.com', ' malo2', 655244041, ''),
+('CU2085', 'marius', 'mariusnom@gmail.com', ' marius1', 655244041, ''),
+('CU2157', 'chacala', 'chacalanom@gmail.com', 'chacala6', 655244041, ''),
+('CU2165', 'pernel', 'pernelnom@gmail.com', 'pernel1', 655244041, ''),
+('CU2255', 'djipa', 'djipanom@gmail.com', 'djipa1', 655244041, ''),
+('CU2324', 'zepe', 'zepenom@gmail.com', 'zepe1', 655244041, ''),
+('CU2446', 'aziz', 'aziznom@gmail.com', 'aziz1', 655244041, ''),
+('CU2506', 'virus', 'virusnom@gmail.com', 'virus1', 655244041, ''),
+('CU2553', ' joel', ' joelnom@gmail.com', 'joel1', 655244041, ''),
+('CU2662', 'jordan', 'jordannom@gmail.com', 'jordan1', 655244041, ''),
+('CU2771', 'fopa', 'fopanom@gmail.com', 'fopa1', 655244041, ''),
+('CU2786', 'ludo', 'ludonom@gmail.com', 'ludo1', 655244041, ''),
+('CU2881', 'moza', 'mozanom@gmail.com', 'moza1', 655244041, ''),
+('CU2957', 'nick', 'nicknom@gmail.com', ' nick1', 655244041, ''),
+('CU2979', 'frank', 'franknom@gmail.com', 'frank', 655244041, ''),
+('CU2988', 'boyboy', 'boyboynom@gmail.com', 'boy251', 655244041, ''),
+('CU2998', 'chris', 'chrisnom@gmail.com', 'chris1', 655244041, ''),
+('CU3009', 'baba', 'babanom@gmail.com', 'baba1', 655244041, '');
 
 -- --------------------------------------------------------
 
@@ -114,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `fermier` (
   `tel` bigint NOT NULL,
   `id_localisation` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_fermier`),
-  KEY `et` (`id_localisation`)
+  KEY `id_localisation` (`id_localisation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -179,64 +302,6 @@ INSERT INTO `image` (`id_image`, `url`, `url_thumbnail`) VALUES
 ('IM0009', '', ''),
 ('IM0010', '', '');
 
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `paiement`
---
-
-DROP TABLE IF EXISTS `paiement`;
-CREATE TABLE IF NOT EXISTS `paiement` (
-  `id_paiement` varchar(50) NOT NULL,
-  `montant` bigint NOT NULL,
-  `id_commande` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_paiement`),
-  KEY `id_commande` (`id_commande`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `paiement`
---
-
-INSERT INTO `paiement` (`id_paiement`, `montant`, `id_commande`) VALUES
-('PA0001', 2600, 'CO0001'),
-('PA0002', 900, 'CO0002'),
-('PA0019', 3300, 'CO0019');
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `commande`
---
-
-DROP TABLE IF EXISTS `commande`;
-CREATE TABLE IF NOT EXISTS `commande` (
-  `id_commande` varchar(50) NOT NULL,
-  `date_com` date NOT NULL,
-  `livre` tinyint(1) NOT NULL,
-  `statut_commande` enum('Non payé','Payé','En attente','Annulé') NOT NULL,
-  `id_client` varchar(50) DEFAULT NULL,
-  `id_livraison` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_commande`),
-  KEY `id_client` (`id_client`),
-  KEY `id_livraison` (`id_livraison`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `commande`
---
-
-INSERT INTO `commande` (`id_commande`, `date_com`, `livre`, `statut_commande`, `id_client`, `id_livraison`) VALUES
-('CO0001', '2022-09-11', 0, 'Payé', 'CU0108', NULL),
-('CO0002', '2022-07-04', 0, 'Annulé', 'CU0117', NULL),
-('CO0003', '2022-11-01', 0, 'En attente', 'CU0105', NULL),
-('CO0004', '2022-08-16', 0, 'Non payé', 'CU0107', NULL),
-('CO0016', '2022-10-22', 1, 'Payé', 'CU0120', 'LI0013'),
-('CO0019', '2022-10-02', 1, 'Payé', 'CU0117', 'LI0017');
-
 -- --------------------------------------------------------
 
 --
@@ -250,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `livraison` (
   `statut_livraison` enum('Livré','Non livré','Annulé') DEFAULT NULL,
   `id_localisation` varchar(50) NOT NULL,
   PRIMARY KEY (`id_livraison`),
-  KEY `id_localisation` (`id_localisation`)
+  KEY `FKq6sxgrn1c09deikecs5pwmbug` (`id_localisation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -305,88 +370,29 @@ INSERT INTO `localisation` (`id_localisation`, `residence`, `ville`, `pays`, `re
 ('LO0003', 'Carrefour Nkolbisson', 'Yaounde', 'Cameroun', 'Centre', '11.454283', '3.872730'),
 ('LO0004', 'Rue des écoles', 'Douala', 'Cameroun', 'Littoral', '9.692649', '4.045433');
 
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer`
+-- Structure de la table `paiement`
 --
 
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE IF NOT EXISTS `customer` (
-  `id_client` varchar(50) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `mdp` varchar(255) NOT NULL,
-  `telephone` bigint NOT NULL,
-  PRIMARY KEY (`id_client`)
+DROP TABLE IF EXISTS `paiement`;
+CREATE TABLE IF NOT EXISTS `paiement` (
+  `id_paiement` varchar(50) NOT NULL,
+  `montant` bigint NOT NULL,
+  `id_commande` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_paiement`),
+  KEY `FKlyltwlxfuqnk4duwmrj7n4vv9` (`id_commande`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `customer`
+-- Déchargement des données de la table `paiement`
 --
 
-INSERT INTO `customer` (`id_client`, `nom`, `email`, `mdp`, `telephone`) VALUES
-('CU0002', 'Ganago Ignacio', 'ignacioganago@gmail.com', 'igniaciogagano', 655489314),
-('CU0003', 'Toko Ekambi', 'ekambi@yahoo.com', 'tokoekambi', 657203694),
-('CU0004', 'Fotsing Gabriel', 'gabrielfotsing@yahoo.com', 'gabrielfosting', 695412358),
-('CU0005', 'Ngah Roland', 'ngahroland@gmail.com', 'ngahroland', 697452586),
-('CU0006', 'Dongmo Salomon', 'salomondongmo@yahoo.fr', 'dongmosalomon', 656680479),
-('CU0007', 'Magne Justine', 'magne.justine@institutsaintjean.org', 'justinemagne', 654200036),
-('CU0008', 'Dipanda Solange', 'solangedipanda@yahoo.fr', 'dipandasolange', 695478899),
-('CU0009', 'Njitap Marcella', 'marcellanjitap@gmail.com', 'njitapmarcella', 656231402),
-('CU0010', 'Bustive Laraison', 'bustivelaraison@gmail.com', 'bustivelaraison', 693254164),
-('CU0011', 'Mindjos Amélie', 'mindjosamelie@yahoo.com', 'mindjosamelie', 655798951),
-('CU0012', 'Kenfack Boris', 'boriskenfack@yahoo.fr', 'boriskenfack', 675486210),
-('CU0013', 'Nadia Morelle', 'morellenadia@gmail.com', 'nadiamorelle', 656120837),
-('CU0014', 'Konlack Cassidy', 'cassidykonlack@gmail.com', 'cassidykonlack', 694752395),
-('CU0015', 'Minsinga Jeff', 'jeffminsinga@gmail.com', 'jeffminsinga', 674016692),
-('CU0016', 'Fotso Badouel', 'fotsobadouel@gmail.com', 'badouelfotso', 691513681),
-('CU0017', 'Ngue Hirna', 'nguehirna@yahoo.com', 'nguehirna', 656893651),
-('CU0018', 'Massing Eva', 'massingeva@gmail.com', 'massingeva', 673846523),
-('CU0019', 'Akono Bernadette', 'bernadetteakono@yahoo.fr', 'bernadetteakono', 678932845),
-('CU0020', 'Melong Elsina', 'elsinamelong@gmail.com', 'melongelsina', 6927418530),
-('CU0101', 'ATANGANA Martin', 'martinatangana@gmail.com', 'atangana101', 699352485),
-('CU0102', 'TINAH Josephine', 'josephinetinah@gmail.com', 'tinah102', 655328456),
-('CU0103', 'TAWAMO Cébastien', 'cebtawamo@gmail.com', 'ceb404', 677524965),
-('CU0104', 'MUSTAFI Al Kelaib', 'kelalmustafi@gmail.com', 'sasuke03', 697481102),
-('CU0105', 'AZEBAZE Olivier', 'olivierazebaze@yahoo.fr', 'badboy197', 650654875),
-('CU0106', 'KENFACK Junior', 'juniorkenfack@gmail.com', 'cr7goat', 670864523),
-('CU0107', 'DONFACK Timothée', 'timotheedonfack@gmail.com', 'ghost33', 690258484),
-('CU0108', 'SIMO Mirabelle', 'mirabellesimo@gmail.com', 'cardib237', 696545423),
-('CU0109', 'KANA Estelle', 'kanaestelle@yahoo.fr', 'kanacoco0000', 677452565),
-('CU0110', 'BOGA Aladin', 'aladinboga@gmail.com', 'bgboga007', 650342696),
-('CU0111', 'PEYO Anastasie', 'anapeyo@gmail.com', 'ana111', 675223654),
-('CU0112', 'DONFACK Isabelle', 'isabelledonfack@ygmail.com', 'ibelle112', 699963254),
-('CU0113', 'DOGMO Teddy', 'dogmoteddy@yahoo.fr', 'teddybear10', 650965326),
-('CU0114', 'BELLA Manuella', 'manubella@gmail.com', 'manubella++', 655232368),
-('CU0115', 'EBENDA Sandrine', 'sandrineebenda@gmail.com', 'sandrychou4', 674513809),
-('CU0116', 'TSAFFACK Franklin', 'tsafackfranklin@yahoo.fr', 'francky06', 655245632),
-('CU0117', 'ZAYO Rick', 'rickross@gmail.com', 'rick.ross', 696541237),
-('CU0118', 'DATCHOUA Patrick', 'patreickdatchoua@gmail.com', 'patpatterson.jr', 697852423),
-('CU0119', 'TEUKAM Andy', 'andyteukam@gmail.com', 'leomessi10', 655863552),
-('CU0120', 'DANDJEU Junior', 'dandjeujr@gmail.com', 'jrdj365', 656338433),
-('CU2011', 'paqueta', 'paquetanom@gmail.com', 'paqet15', 655244043),
-('CU2032', 'bozar', 'bozarnom@gmail.com', 'boza1', 655244041),
-('CU2053', 'aristide', 'aristidenom@gmail.com', 'aris1', 655244041),
-('CU2064', 'malo', 'malonom@gmail.com', ' malo2', 655244041),
-('CU2085', 'marius', 'mariusnom@gmail.com', ' marius1', 655244041),
-('CU2157', 'chacala', 'chacalanom@gmail.com', 'chacala6', 655244041),
-('CU2165', 'pernel', 'pernelnom@gmail.com', 'pernel1', 655244041),
-('CU2255', 'djipa', 'djipanom@gmail.com', 'djipa1', 655244041),
-('CU2324', 'zepe', 'zepenom@gmail.com', 'zepe1', 655244041),
-('CU2446', 'aziz', 'aziznom@gmail.com', 'aziz1', 655244041),
-('CU2506', 'virus', 'virusnom@gmail.com', 'virus1', 655244041),
-('CU2553', ' joel', ' joelnom@gmail.com', 'joel1', 655244041),
-('CU2662', 'jordan', 'jordannom@gmail.com', 'jordan1', 655244041),
-('CU2771', 'fopa', 'fopanom@gmail.com', 'fopa1', 655244041),
-('CU2786', 'ludo', 'ludonom@gmail.com', 'ludo1', 655244041),
-('CU2881', 'moza', 'mozanom@gmail.com', 'moza1', 655244041),
-('CU2957', 'nick', 'nicknom@gmail.com', ' nick1', 655244041),
-('CU2979', 'frank', 'franknom@gmail.com', 'frank', 655244041),
-('CU2988', 'boyboy', 'boyboynom@gmail.com', 'boy251', 655244041),
-('CU2998', 'chris', 'chrisnom@gmail.com', 'chris1', 655244041),
-('CU3009', 'baba', 'babanom@gmail.com', 'baba1', 655244041);
+INSERT INTO `paiement` (`id_paiement`, `montant`, `id_commande`) VALUES
+('PA0001', 2600, 'CO0001'),
+('PA0002', 900, 'CO0002'),
+('PA0019', 3300, 'CO0019');
 
 -- --------------------------------------------------------
 
@@ -402,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `paiementcarte` (
   `date_verticale` date NOT NULL,
   `id_paiement` varchar(50) NOT NULL,
   PRIMARY KEY (`id_pc`),
-  KEY `id_paiement` (`id_paiement`)
+  KEY `FK7xhnvynjh2ha2v0jeb86xrd74` (`id_paiement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -410,12 +416,45 @@ CREATE TABLE IF NOT EXISTS `paiementcarte` (
 --
 
 --
+-- Contraintes pour la table `article`
+--
+ALTER TABLE `article`
+  ADD CONSTRAINT `FK5qbslk1ioudummgell60ha69j` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`),
+  ADD CONSTRAINT `FKcgjglveh9und0h790a6d3f48k` FOREIGN KEY (`id_image`) REFERENCES `image` (`id_image`),
+  ADD CONSTRAINT `FKmmnu28v0fkpg1q8wwdkp2i4o4` FOREIGN KEY (`id_fermier`) REFERENCES `fermier` (`id_fermier`);
+
+--
+-- Contraintes pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD CONSTRAINT `FKaxq0magj1niv0nvq5s7c6vk5s` FOREIGN KEY (`id_livraison`) REFERENCES `livraison` (`id_livraison`),
+  ADD CONSTRAINT `FKfli8jhlji7kqjm5dpuey15agd` FOREIGN KEY (`id_client`) REFERENCES `customer` (`id_client`);
+
+--
 -- Contraintes pour la table `fermier`
 --
 ALTER TABLE `fermier`
   ADD CONSTRAINT `et` FOREIGN KEY (`id_localisation`) REFERENCES `localisation` (`id_localisation`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Contraintes pour la table `livraison`
+--
+ALTER TABLE `livraison`
+  ADD CONSTRAINT `FKq6sxgrn1c09deikecs5pwmbug` FOREIGN KEY (`id_localisation`) REFERENCES `localisation` (`id_localisation`);
+
+--
+-- Contraintes pour la table `paiement`
+--
+ALTER TABLE `paiement`
+  ADD CONSTRAINT `FKlyltwlxfuqnk4duwmrj7n4vv9` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`);
+
+--
+-- Contraintes pour la table `paiementcarte`
+--
+ALTER TABLE `paiementcarte`
+  ADD CONSTRAINT `FK7xhnvynjh2ha2v0jeb86xrd74` FOREIGN KEY (`id_paiement`) REFERENCES `paiement` (`id_paiement`);
 COMMIT;
 
-
-
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

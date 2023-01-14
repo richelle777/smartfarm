@@ -26,11 +26,7 @@ public class ArticleRestController {
 
 
     @GetMapping("/{category}/searchByCategorie")
-<<<<<<< Updated upstream
-    public  ResponseEntity<List<ArticleDtoForList>> searchArticle(@Param("category") String category){
-=======
     public  ResponseEntity<List<ArticleDto>> searchArticle(@PathVariable String category){
->>>>>>> Stashed changes
         return ResponseEntity.ok(iArticle.searchArticlesBYCategorie(category));
     }
 
