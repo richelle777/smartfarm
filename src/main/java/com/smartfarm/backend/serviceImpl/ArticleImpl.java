@@ -33,13 +33,6 @@ public class ArticleImpl implements IArticle{
     public List<ArticleDto> listArticles() {
         List<ArticleDto> articleDtos = articleRepository.findAll().stream().map(article ->{
             ArticleDto articleDto = articleMapper.toDto(article);
-<<<<<<< Updated upstream
-            System.out.println(articleDto);
-            articleDto.setCategorieDto(categorieMapper.toDto(article.getCategorie()));
-            articleDto.setFermierDto(fermierMapper.toDto(article.getFermier()));
-            articleDto.setImageDto(imageMapper.toDto(article.getImage()));
-=======
->>>>>>> Stashed changes
             return articleDto;
         }).collect(Collectors.toList());
         return articleDtos;
@@ -89,15 +82,6 @@ public class ArticleImpl implements IArticle{
     }
 
     @Override
-<<<<<<< Updated upstream
-    public List<ArticleDtoForList> searchArticlesBYCategorie(String category) {
-        List<ArticleDtoForList> articleDtos = articleRepository.findArticleByCategorie(category).stream().map(article ->{
-            ArticleDtoForList articleDto = articleForListMapper.toDto(article);
-            articleDto.setImageDto(imageMapper.toDto(article.getImage()));
-            return articleDto;
-        }).collect(Collectors.toList());
-        return articleDtos;
-=======
     public String update(String string, MultipartFile file) throws IOException {
         // Transform json to articleDto
         Gson gson = new Gson();
@@ -110,7 +94,6 @@ public class ArticleImpl implements IArticle{
         Article article = articleRepository.findById(articleDto.getId()).get();
         articleMapper.copy(articleDto, article);
         return "Mise à jour effectué avec succés";
->>>>>>> Stashed changes
     }
 
     @Override
