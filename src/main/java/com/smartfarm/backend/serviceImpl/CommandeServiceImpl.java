@@ -2,7 +2,9 @@ package com.smartfarm.backend.serviceImpl;
 
 import com.smartfarm.backend.mapper.CommandeMapper;
 import com.smartfarm.backend.mapper.CustomerMapper;
+import com.smartfarm.backend.mapper.LocalisationMapper;
 import com.smartfarm.backend.model.dto.CommandeDto;
+import com.smartfarm.backend.model.dto.LivraisonDto;
 import com.smartfarm.backend.model.dto.Produit;
 import com.smartfarm.backend.model.entities.Commande;
 import com.smartfarm.backend.repository.CommandeRepository;
@@ -27,6 +29,11 @@ public class CommandeServiceImpl implements ICommande {
     @Autowired
     ICommandearticle iCommandearticle;
 
+    @Autowired
+    CustomerMapper customerMapper;
+
+    @Autowired
+    LocalisationMapper localisationMapper;
     @Override
     public List<CommandeDto> listCommandes() {
         List<CommandeDto> commandeDtos = commandeRepository.findAll().stream().map(commande -> {
@@ -78,5 +85,24 @@ public class CommandeServiceImpl implements ICommande {
             map.put(commandeDto, produits);
         }
         return map;
+    }
+
+    @Override
+    public List<CommandeDto> listCommandesClient(String id) {
+
+            List<CommandeDto> commandeDtos = commandeRepository.findByClient_Id(id).get().stream().map(commande -> {
+                CommandeDto commandeDto = commandeMapper.toDto(commande);
+                commandeDto.setClientDto(customerMapper.toDto(commande.getClient()));
+                //commandeDto.setLivraisonDto(livraisonMapper.toDto(commande.getLivraison()));
+                LivraisonDto livraisonDto = new LivraisonDto();
+                livraisonDto.setLocalisationDto(localisationMapper.toDto(commande.getLivraison().getLocalisation()));
+                livraisonDto.setId(commande.getLivraison().getId());
+                livraisonDto.setDate(commande.getLivraison().getDate());
+                livraisonDto.setStatutLivraison(commande.getLivraison().getStatutLivraison());
+                //livraisonDto.setLocalisationDto(localisationMapper.toDto(commande.getLivraison().getLocalisation()));
+                commandeDto.setLivraisonDto(livraisonDto);
+                return commandeDto;
+            }).collect(Collectors.toList());
+            return commandeDtos;
     }
 }
