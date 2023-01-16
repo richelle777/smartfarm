@@ -43,5 +43,4 @@ public class Localisation {
     @Column(name = "deleted")
     private boolean deleted;
 
-
 }
