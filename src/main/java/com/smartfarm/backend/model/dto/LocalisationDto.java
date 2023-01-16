@@ -16,4 +16,6 @@ public class LocalisationDto {
     private String region;
     private String longitude;
     private String latitude;
+    private String added_by;
+    private boolean deleted;
 }

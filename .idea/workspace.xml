@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/smartFarm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smartFarm.iml" afterDir="false" />
+    <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="&quot;localisation d'un client accessible via commande/user/id&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ICommande.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ICommande.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/CommandeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/CommandeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/dto/LocalisationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/dto/LocalisationDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/entities/Localisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/entities/Localisation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/FermierRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/FermierRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/LivraisonRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/LivraisonRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/repository/LocalisationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/repository/LocalisationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ILocalisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ILocalisation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LocalisationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LocalisationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +30,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -153,6 +157,14 @@
       <workItem from="1672919656678" duration="449000" />
       <workItem from="1672921930515" duration="8000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;localisation d'un client accessible via commande/user/id&quot;">
+      <created>1673703158850</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673703158850</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,5 +180,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="localisation d'un client accessible via commande/user/id" />
+    <MESSAGE value="&quot;localisation d'un client accessible via commande/user/id&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;localisation d'un client accessible via commande/user/id&quot;" />
   </component>
 </project>
