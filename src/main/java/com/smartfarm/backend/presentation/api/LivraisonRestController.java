@@ -43,4 +43,7 @@ public class LivraisonRestController {
         LivraisonRestController.log.info("Mise à jour du statut de la livraison d'Id : " + id);
         return ResponseEntity.ok(iLivraison.updateOrderDelivery(id, state));
     }
+
+
+
 }

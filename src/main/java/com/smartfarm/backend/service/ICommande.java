@@ -14,4 +14,6 @@ public interface ICommande {
     String saveCommande(CommandeDto commandeDto);
     String updateStatut(String id, String state);
     Map<CommandeDto, List<Produit>> historiqueCommandeClient(String id);
+
+    List<CommandeDto> listCommandesClient(String id);
 }

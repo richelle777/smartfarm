@@ -36,4 +36,10 @@ public class CommandeRestController {
         return ResponseEntity.ok(iCommande.updateStatut(id, state));
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<CommandeDto>> CommandesUser(@PathVariable String id) {
+        CommandeRestController.log.info("Mise à jour statut de la commande d'id : " + id);
+        return ResponseEntity.ok(iCommande.listCommandesClient(id));
+    }
+
 }

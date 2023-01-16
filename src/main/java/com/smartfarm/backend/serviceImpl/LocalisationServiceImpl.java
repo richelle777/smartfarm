@@ -1,12 +1,16 @@
 package com.smartfarm.backend.serviceImpl;
 
 import com.smartfarm.backend.mapper.LocalisationMapper;
+import com.smartfarm.backend.model.dto.ArticleDto;
 import com.smartfarm.backend.model.dto.LocalisationDto;
 import com.smartfarm.backend.model.entities.Localisation;
 import com.smartfarm.backend.repository.LocalisationRepository;
 import com.smartfarm.backend.service.ILocalisation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LocalisationServiceImpl implements ILocalisation {
@@ -29,6 +33,7 @@ public class LocalisationServiceImpl implements ILocalisation {
                 isIdNotNew = false;
         }
         localisationDto.setId(id);
+        localisationDto.setDeleted(false);
         localisationRepository.save(localisationMapper.toEntity(localisationDto));
         return "Enregistrement effectué avec succés";
     }
@@ -46,4 +51,23 @@ public class LocalisationServiceImpl implements ILocalisation {
         localisationRepository.deleteById(id);
         return "Suppression effectué avec succés";
     }
+
+    @Override
+    public String hideLocalisation(String id) {
+        Localisation localisation = localisationRepository.findById(id).get();
+        localisation.setDeleted(true);
+        localisationRepository.save(localisation);
+        return "mise a jour reussi";
+    }
+
+    @Override
+    public List<LocalisationDto> getLocalisationUser(String id) {
+        List<LocalisationDto> localisationDtos = localisationRepository.findByAdded_by(id).stream().map(local ->{
+            LocalisationDto localisationDto = localisationMapper.toDto(local);
+            return localisationDto;
+        }).collect(Collectors.toList());
+        return localisationDtos;
+    }
+
+
 }
