@@ -38,7 +38,7 @@ public class FermierServiceImpl implements IFermier {
         Fermier fermier = fermierRepository.findById(fermierDto.getId()).get();
         fermierMapper.copy(fermierDto, fermier);
         fermierRepository.save(fermier);
-        return "Mise à jour du fermier "+ fermier.getId() + " effectué avec succés";
+        return "Mise à jour du fermier effectué avec succés";
     }
 
     @Override
