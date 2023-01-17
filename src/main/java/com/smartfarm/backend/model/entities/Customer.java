@@ -22,9 +22,6 @@ public class Customer {
     @Column(name = "nom", nullable = false)
     private String nom;
 
-    @Column(name = "username", nullable = false)
-    private String username;
-
     @Column(name = "email", nullable = false)
     private String email;
 

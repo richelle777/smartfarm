@@ -18,24 +18,28 @@ public class CommandeRestController {
     @Autowired
     private ICommande iCommande;
 
+    @CrossOrigin("*")
     @GetMapping("/all")
     public ResponseEntity<List<CommandeDto>> getAllCommandes() {
         CommandeRestController.log.info("Liste des commandes");
         return ResponseEntity.ok(iCommande.listCommandes());
     }
 
+    @CrossOrigin("*")
     @PostMapping(value = "/save")
     public void enregistrer(@RequestBody CommandeDto create){
         CommandeRestController.log.info("enregistrer-une-commande");
         iCommande.saveCommande(create);
     }
 
+    @CrossOrigin("*")
     @GetMapping("/{id}/update/state/{state}")
     public ResponseEntity<String> updateStateCommande(@PathVariable String id, @PathVariable String state) {
         CommandeRestController.log.info("Mise à jour statut de la commande d'id : " + id);
         return ResponseEntity.ok(iCommande.updateStatut(id, state));
     }
 
+    @CrossOrigin("*")
     @GetMapping("/user/{id}")
     public ResponseEntity<List<CommandeDto>> CommandesUser(@PathVariable String id) {
         CommandeRestController.log.info("Mise à jour statut de la commande d'id : " + id);
