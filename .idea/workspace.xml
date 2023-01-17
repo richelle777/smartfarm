@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="&quot;localisation d'un client accessible via commande/user/id&quot;">
+    <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/smartFarm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smartFarm.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/dto/LocalisationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/dto/LocalisationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/entities/Localisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/model/entities/Localisation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/FermierRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/FermierRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdsmartfarmer-new.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bdsmartfarmer-new.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/LivraisonRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/LivraisonRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/repository/LocalisationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/repository/LocalisationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ILocalisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ILocalisation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LocalisationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LocalisationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/repository/LivraisonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/repository/LivraisonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ILivraison.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ILivraison.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LivraisonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LivraisonServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +25,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -80,6 +81,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.smartfarm.backend" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\Documents\USJ\INGE4_ISI\Developpement Mobile\Projets\smartFarm\backend" />
     </key>
@@ -180,6 +184,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="localisation d'un client accessible via commande/user/id" />
