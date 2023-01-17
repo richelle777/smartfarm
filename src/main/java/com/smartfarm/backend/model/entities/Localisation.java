@@ -36,4 +36,11 @@ public class Localisation {
 
     @Column(name = "latitude")
     private String latitude;
+
+    @Column(name = "added_by")
+    private String added_by;
+
+    @Column(name = "deleted")
+    private boolean deleted;
+
 }

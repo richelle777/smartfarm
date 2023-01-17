@@ -1,7 +1,6 @@
 package com.smartfarm.backend.serviceImpl;
 
 import com.smartfarm.backend.mapper.LivraisonMapper;
-import com.smartfarm.backend.mapper.LocalisationMapper;
 import com.smartfarm.backend.model.dto.LivraisonDto;
 import com.smartfarm.backend.model.entities.Livraison;
 import com.smartfarm.backend.repository.LivraisonRepository;
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,17 +23,17 @@ public class LivraisonServiceImpl implements ILivraison {
 
     @Override
     public List<LivraisonDto> listLivraison() {
-        List<LivraisonDto> livraisonDtos = livraisonRepository.findAll().stream().map( livraison -> {
-            LivraisonDto livraisonDto = livraisonMapper.toDto(livraison);
-            return livraisonDto;
-        })
+        List<LivraisonDto> livraisonDtos = livraisonRepository.findAll().stream().map(livraison -> {
+                    LivraisonDto livraisonDto = livraisonMapper.toDto(livraison);
+                    return livraisonDto;
+                })
                 .collect(Collectors.toList());
         return livraisonDtos;
     }
 
     @Override
     public LivraisonDto findLivraisonById(String id) {
-        if(livraisonRepository.findById(id).isPresent()){
+        if (livraisonRepository.findById(id).isPresent()) {
             LivraisonDto livraisonDto = livraisonMapper.toDto(livraisonRepository.findById(id).get());
             return livraisonDto;
         }
