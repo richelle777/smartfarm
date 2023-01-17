@@ -23,10 +23,13 @@ public class Paiementcarte {
     private String crypto;
 
     @Column(name = "numero_carte")
-    private Long numeroCarte;
+    private String numeroCarte;
 
     @Column(name = "date_verticale", nullable = false)
     private LocalDate dateVerticale;
+
+    @Column(name = "devise", nullable = false)
+    private Currency currency;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_paiement", nullable = false)
