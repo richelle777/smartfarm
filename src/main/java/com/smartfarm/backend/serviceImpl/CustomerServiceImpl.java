@@ -6,6 +6,7 @@ import com.smartfarm.backend.model.dto.CustomerDto;
 import com.smartfarm.backend.model.dto.FermierDto;
 import com.smartfarm.backend.model.entities.Customer;
 import com.smartfarm.backend.model.entities.Fermier;
+import com.smartfarm.backend.model.entities.Image;
 import com.smartfarm.backend.repository.CustomerRepository;
 import com.smartfarm.backend.service.ICustomer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,22 @@ public class CustomerServiceImpl implements ICustomer {
 
     @Override
     public ResponseEntity<?> save(CustomerDto customerDto) {
+        Boolean isIdNotNew = true;
+        String id = "";
+        while (isIdNotNew){
+            long code = Math.round(Math.random()* 1000);
+            id = "CU" + code;
+            if (!customerRepository.existsById(id))
+                isIdNotNew = false;
+        }
+        customerDto.setId(id);
         if(customerRepository.findById(customerDto.getId()).isPresent() || customerRepository.findById(customerDto.getEmail()).isPresent()){
             return ResponseEntity.ok("this user is already save");
         }
         else {
              customerRepository.save(customerMapper.toEntity(customerDto)).getId();
-             return ResponseEntity.ok(customerDto);
+            System.out.println(customerDto);
+            return ResponseEntity.ok(customerDto);
         }
     }
 
