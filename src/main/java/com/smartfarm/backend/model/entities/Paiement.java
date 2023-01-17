@@ -14,12 +14,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 public class Paiement {
+
     @Id
     @Column(name = "id_paiement", nullable = false)
     private String id;
 
     @Column(name = "montant", nullable = false)
     private Long montant;
+
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_commande", nullable = false)

@@ -24,15 +24,17 @@ public class ImageImpl implements Iimage {
     public ImageDto store(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Image image = new Image(fileName, file.getBytes());
+
         Boolean isIdNotNew = true;
         String id = "";
         while (isIdNotNew){
-            long code = Math.round(Math.random()* 1000);
+            long code = Math.round(Math.random()* 10000);
             id = "IM" + code;
             if (!imageRepository.existsById(id))
                 isIdNotNew = false;
         }
         image.setId(id);
+
         return imageMapper.toDto(imageRepository.save(image));
     }
 
