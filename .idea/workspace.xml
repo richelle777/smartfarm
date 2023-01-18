@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java&#10;#&#9;src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java">
-      <change beforePath="$PROJECT_DIR$/.idea/smartFarm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smartFarm.iml" afterDir="false" />
+    <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="version avec generation automatique de l'id pour le customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/PaiementRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/PaiementRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/IPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/IPaiement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/PaiementImplService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/PaiementImplService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,6 +195,21 @@
     <MESSAGE value="&quot;localisation d'un client accessible via commande/user/id&quot;" />
     <MESSAGE value="version du projet avec modification de l'authentification public" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java&#10;#&#9;src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/smartfarm/backend/presentation/api/CommandeRestController.java&#10;#&#9;src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" />
+    <MESSAGE value="version avec generation automatique de l'id pour le customer" />
+    <option name="LAST_COMMIT_MESSAGE" value="version avec generation automatique de l'id pour le customer" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/PaiementRestController.java</url>
+          <line>23</line>
+          <properties class="com.smartfarm.backend.presentation.api.PaiementRestController">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
