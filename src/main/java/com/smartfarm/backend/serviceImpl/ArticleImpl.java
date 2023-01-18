@@ -105,4 +105,9 @@ public class ArticleImpl implements IArticle{
         }
         return "Erreur suppression : Id spécifié non-trouvé.";
     }
+
+    @Override
+    public List<ArticleDto> listArticlesByIdFermier(String idFermier) {
+        return articleRepository.findByFermier_Id(idFermier).get().stream().map(articleMapper::toDto).collect(Collectors.toList());
+    }
 }

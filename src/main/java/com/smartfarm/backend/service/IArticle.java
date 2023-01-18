@@ -13,4 +13,5 @@ public interface IArticle {
     String save(String articleDto, MultipartFile file) throws IOException;
     String update(String articleDto, MultipartFile file) throws IOException;
     String delete(String id);
+    List<ArticleDto> listArticlesByIdFermier(String idFermier);
 }

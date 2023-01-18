@@ -52,4 +52,11 @@ public class ArticleRestController {
         ArticleRestController.log.info("Suppréssion de l'article");
         return ResponseEntity.ok(iArticle.delete(id));
     }
+
+    @CrossOrigin("*")
+    @GetMapping("/fermier/{id}/all")
+    public  ResponseEntity<List<ArticleDto>> getArticlesByIdFermier(@PathVariable String id){
+        ArticleRestController.log.info("Collecte des articles du fermier d'id : " + id);
+        return ResponseEntity.ok(iArticle.listArticlesByIdFermier(id));
+    }
 }
