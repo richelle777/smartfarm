@@ -2,6 +2,7 @@ package com.smartfarm.backend.serviceImpl;
 
 import com.smartfarm.backend.mapper.FermierMapper;
 import com.smartfarm.backend.mapper.LocalisationMapper;
+import com.smartfarm.backend.model.dto.AuthentificationFermier;
 import com.smartfarm.backend.model.dto.ConnexionForm;
 import com.smartfarm.backend.model.dto.FermierDto;
 import com.smartfarm.backend.model.dto.LocalisationDto;
@@ -52,15 +53,13 @@ public class FermierServiceImpl implements IFermier {
     }
 
     @Override
-    public String authentification(ConnexionForm connexionForm) {
+    public AuthentificationFermier authentification(ConnexionForm connexionForm) {
         if(fermierRepository.existsByEmail(connexionForm.getEmail())){
             Fermier fermier = fermierRepository.findByEmail(connexionForm.getEmail()).get();
             if (fermier.getMotDePasse().equals(connexionForm.getPassword())){
-                return "Identité verifié avec succés";
-            }else {
-                return "Erreur mot de passe";
+                return new AuthentificationFermier(fermier.getId());
             }
         }
-        return "Erreur email";
+        return null;
     }
 }

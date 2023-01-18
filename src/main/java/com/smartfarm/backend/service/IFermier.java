@@ -1,5 +1,6 @@
 package com.smartfarm.backend.service;
 
+import com.smartfarm.backend.model.dto.AuthentificationFermier;
 import com.smartfarm.backend.model.dto.ConnexionForm;
 import com.smartfarm.backend.model.dto.FermierDto;
 import com.smartfarm.backend.model.dto.LocalisationDto;
@@ -9,5 +10,5 @@ public interface IFermier {
     String updateFermier(FermierDto fermierDto);
     String saveLocalisation(LocalisationDto localisationDto);
     String save(FermierDto fermierDto);
-    String authentification(ConnexionForm connexionForm);
+    AuthentificationFermier authentification(ConnexionForm connexionForm);
 }
