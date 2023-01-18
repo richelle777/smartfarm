@@ -34,6 +34,22 @@ public class CustomerRestController {
         return ResponseEntity.ok(iCommande.historiqueCommandeClient(id));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
+        return ResponseEntity.ok(iCustomer.listCustomers());
+    }
+    @GetMapping("localisation/user/{id}")
+    public ResponseEntity<List<LocalisationDto>> listLocalisationUser(@PathVariable String id) {
+        CustomerRestController.log.info("Historique des localisations de l'user id : " + id);
+        return ResponseEntity.ok(iLocalisation.getLocalisationUser(id));
+    }
+
+    @GetMapping("localisation/hide/{id}")
+    public ResponseEntity<String> hideLocalisation(@PathVariable String id) {
+        CustomerRestController.log.info("cacher a l'utilisateur la localisation id :" +id);
+        return ResponseEntity.ok(iLocalisation.hideLocalisation(id));
+    }
+
     @CrossOrigin("*")
     @PostMapping(value = "/createaccount")
     public ResponseEntity<?> createAccount(@RequestBody CustomerDto customerDto) {
@@ -51,19 +67,10 @@ public class CustomerRestController {
         return ResponseEntity.ok(iCustomer.authentification(connexionForm));
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
-        return ResponseEntity.ok(iCustomer.listCustomers());
-    }
-    @GetMapping("localisation/user/{id}")
-    public ResponseEntity<List<LocalisationDto>> listLocalisationUser(@PathVariable String id) {
-        CustomerRestController.log.info("Historique des localisations de l'user id : " + id);
-        return ResponseEntity.ok(iLocalisation.getLocalisationUser(id));
+    @PostMapping(value = "/update")
+    public CustomerDto update(@RequestBody CustomerDto create){
+        CustomerRestController.log.info("modifier-client");
+        return iCustomer.updateCustomer(create);
     }
 
-    @GetMapping("localisation/hide/{id}")
-    public ResponseEntity<String> hideLocalisation(@PathVariable String id) {
-        CustomerRestController.log.info("cacher a l'utilisateur la localisation id :" +id);
-        return ResponseEntity.ok(iLocalisation.hideLocalisation(id));
-    }
 }

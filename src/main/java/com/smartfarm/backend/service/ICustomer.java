@@ -13,4 +13,5 @@ public interface ICustomer {
     ResponseEntity<?> save(CustomerDto customerDto);
     ResponseEntity<?> authentification(ConnexionForm connexionForm);
     List<CustomerDto> listCustomers();
+    CustomerDto updateCustomer(CustomerDto customerDto);
 }

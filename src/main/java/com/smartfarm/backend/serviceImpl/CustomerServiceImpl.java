@@ -73,4 +73,14 @@ public class CustomerServiceImpl implements ICustomer {
         }
         return  ResponseEntity.ok("email doesn't exist");
     }
+
+    @Override
+    public CustomerDto updateCustomer(CustomerDto customerDto) {
+        //recherche l'entitite qui correspond au client que nous rechercons
+        //update
+        Customer customer = customerRepository.getReferenceById(customerDto.getId());
+        customerMapper.copy(customerDto,customer);
+        return customerMapper.toDto(customerRepository.save(customer));
+
+    }
 }
