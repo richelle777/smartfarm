@@ -73,4 +73,9 @@ public class CustomerRestController {
         return iCustomer.updateCustomer(create);
     }
 
+    @GetMapping("infos/{email}")
+    public ResponseEntity<CustomerDto> getInfoUsers(@PathVariable String email) {
+        CustomerRestController.log.info(" vous recuperez les infos du user ayant pour email :" + email);
+        return ResponseEntity.ok(iCustomer.findbyEmail(email));
+    }
 }

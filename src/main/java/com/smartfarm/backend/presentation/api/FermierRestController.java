@@ -18,7 +18,6 @@ public class FermierRestController {
     @Autowired
     private IFermier iFermier;
 
-    @CrossOrigin("*")
     @PostMapping(value = "/save/localisation")
     public void saveLocalisation(@RequestBody LocalisationDto localisationDto) {
         FermierRestController.log.info("Enregistrement - Localisation");

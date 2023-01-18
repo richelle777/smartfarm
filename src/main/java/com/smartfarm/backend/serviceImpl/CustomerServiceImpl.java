@@ -34,6 +34,14 @@ public class CustomerServiceImpl implements ICustomer {
     }
 
     @Override
+    public CustomerDto findbyEmail(String email) {
+        if(customerRepository.existsByEmail(email)){
+            return customerMapper.toDto(customerRepository.findByEmail(email).get());
+        }
+        return null;
+    }
+
+    @Override
     public List<CustomerDto> listCustomers() {
         return  customerRepository.findAll().stream().map(customer -> customerMapper.toDto(customer))
                 .collect(Collectors.toList());

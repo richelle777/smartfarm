@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LivraisonRepository extends JpaRepository<Livraison, String> {
+
+//    please create a function to create livraison
     Optional<Livraison> findById(String id);
     Optional<List<Livraison>> findByStatutLivraison(String state);
 
