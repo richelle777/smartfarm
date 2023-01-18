@@ -56,7 +56,7 @@ public class FermierServiceImpl implements IFermier {
         if(fermierRepository.existsByEmail(connexionForm.getEmail())){
             Fermier fermier = fermierRepository.findByEmail(connexionForm.getEmail()).get();
             if (fermier.getMotDePasse().equals(connexionForm.getPassword())){
-                return fermier.getId();
+                return "Identité verifié avec succés";
             }else {
                 return "Erreur mot de passe";
             }
