@@ -34,16 +34,19 @@ public class CustomerRestController {
         return ResponseEntity.ok(iCommande.historiqueCommandeClient(id));
     }
 
+    @CrossOrigin("*")
     @GetMapping("/all")
     public ResponseEntity<List<CustomerDto>> getAllCustomers() {
         return ResponseEntity.ok(iCustomer.listCustomers());
     }
+    @CrossOrigin("*")
     @GetMapping("localisation/user/{id}")
     public ResponseEntity<List<LocalisationDto>> listLocalisationUser(@PathVariable String id) {
         CustomerRestController.log.info("Historique des localisations de l'user id : " + id);
         return ResponseEntity.ok(iLocalisation.getLocalisationUser(id));
     }
-
+    
+    @CrossOrigin("*")
     @GetMapping("localisation/hide/{id}")
     public ResponseEntity<String> hideLocalisation(@PathVariable String id) {
         CustomerRestController.log.info("cacher a l'utilisateur la localisation id :" +id);
@@ -67,12 +70,14 @@ public class CustomerRestController {
         return ResponseEntity.ok(iCustomer.authentification(connexionForm));
     }
 
+    @CrossOrigin("*")
     @PostMapping(value = "/update")
     public CustomerDto update(@RequestBody CustomerDto create){
         CustomerRestController.log.info("modifier-client");
         return iCustomer.updateCustomer(create);
     }
 
+    @CrossOrigin("*")
     @GetMapping("infos/{email}")
     public ResponseEntity<CustomerDto> getInfoUsers(@PathVariable String email) {
         CustomerRestController.log.info(" vous recuperez les infos du user ayant pour email :" + email);
