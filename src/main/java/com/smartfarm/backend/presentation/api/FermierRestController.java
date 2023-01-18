@@ -1,5 +1,6 @@
 package com.smartfarm.backend.presentation.api;
 
+import com.smartfarm.backend.model.dto.AuthentificationFermier;
 import com.smartfarm.backend.model.dto.ConnexionForm;
 import com.smartfarm.backend.model.dto.FermierDto;
 import com.smartfarm.backend.model.dto.LocalisationDto;
@@ -43,7 +44,7 @@ public class FermierRestController {
     }
 
     @PostMapping(value = "/signin")
-    public ResponseEntity<String> authentification(@RequestBody ConnexionForm connexionForm) {
+    public ResponseEntity<AuthentificationFermier> authentification(@RequestBody ConnexionForm connexionForm) {
         FermierRestController.log.info("Connexion au compte fermier d'email : " + connexionForm.getEmail());
         return ResponseEntity.ok(iFermier.authentification(connexionForm));
     }
