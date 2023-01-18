@@ -35,6 +35,25 @@ public class CustomerRestController {
     }
 
     @CrossOrigin("*")
+    @GetMapping("/all")
+    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
+        return ResponseEntity.ok(iCustomer.listCustomers());
+    }
+    @CrossOrigin("*")
+    @GetMapping("localisation/user/{id}")
+    public ResponseEntity<List<LocalisationDto>> listLocalisationUser(@PathVariable String id) {
+        CustomerRestController.log.info("Historique des localisations de l'user id : " + id);
+        return ResponseEntity.ok(iLocalisation.getLocalisationUser(id));
+    }
+    
+    @CrossOrigin("*")
+    @GetMapping("localisation/hide/{id}")
+    public ResponseEntity<String> hideLocalisation(@PathVariable String id) {
+        CustomerRestController.log.info("cacher a l'utilisateur la localisation id :" +id);
+        return ResponseEntity.ok(iLocalisation.hideLocalisation(id));
+    }
+
+    @CrossOrigin("*")
     @PostMapping(value = "/createaccount")
     public ResponseEntity<?> createAccount(@RequestBody CustomerDto customerDto) {
         CustomerRestController.log.info("Création d'un compte public");
@@ -51,22 +70,14 @@ public class CustomerRestController {
         return ResponseEntity.ok(iCustomer.authentification(connexionForm));
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
-        return ResponseEntity.ok(iCustomer.listCustomers());
-    }
-    @GetMapping("localisation/user/{id}")
-    public ResponseEntity<List<LocalisationDto>> listLocalisationUser(@PathVariable String id) {
-        CustomerRestController.log.info("Historique des localisations de l'user id : " + id);
-        return ResponseEntity.ok(iLocalisation.getLocalisationUser(id));
+    @CrossOrigin("*")
+    @PostMapping(value = "/update")
+    public CustomerDto update(@RequestBody CustomerDto create){
+        CustomerRestController.log.info("modifier-client");
+        return iCustomer.updateCustomer(create);
     }
 
-    @GetMapping("localisation/hide/{id}")
-    public ResponseEntity<String> hideLocalisation(@PathVariable String id) {
-        CustomerRestController.log.info("cacher a l'utilisateur la localisation id :" +id);
-        return ResponseEntity.ok(iLocalisation.hideLocalisation(id));
-    }
-
+    @CrossOrigin("*")
     @GetMapping("infos/{email}")
     public ResponseEntity<CustomerDto> getInfoUsers(@PathVariable String email) {
         CustomerRestController.log.info(" vous recuperez les infos du user ayant pour email :" + email);
