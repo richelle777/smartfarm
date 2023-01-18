@@ -1,9 +1,9 @@
 package com.smartfarm.backend.service;
 
 import com.smartfarm.backend.model.dto.LivraisonDto;
-import com.smartfarm.backend.model.entities.Livraison;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ILivraison {
     List<LivraisonDto> listLivraison();

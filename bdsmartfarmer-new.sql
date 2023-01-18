@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `id_commande` varchar(50) NOT NULL,
   `date_com` date NOT NULL,
   `livre` tinyint(1) NOT NULL,
-  `statut_commande` enum('Non payé','Payé','En attente','Annulé') NOT NULL,
+  `statut_commande` enum('Non payé','Payé','En attente','Annulé','En cours') NOT NULL,
   `id_client` varchar(50) DEFAULT NULL,
   `id_livraison` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_commande`),

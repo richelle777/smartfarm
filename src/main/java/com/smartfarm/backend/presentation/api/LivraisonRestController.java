@@ -1,6 +1,7 @@
 package com.smartfarm.backend.presentation.api;
 
 import com.smartfarm.backend.model.dto.LivraisonDto;
+import com.smartfarm.backend.model.entities.Livraison;
 import com.smartfarm.backend.service.ILivraison;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class LivraisonRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<LivraisonDto> getDeliveryById(@PathVariable String id) {
-        LivraisonRestController.log.info("Lecture - Livraison : " + id);
+        LivraisonRestController.log.info("Affiche  - Statut de la livraison : " + id);
         return ResponseEntity.ok(iLivraison.findLivraisonById(id));
     }
 
@@ -43,7 +44,6 @@ public class LivraisonRestController {
         LivraisonRestController.log.info("Mise à jour du statut de la livraison d'Id : " + id);
         return ResponseEntity.ok(iLivraison.updateOrderDelivery(id, state));
     }
-
 
 
 }
