@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="068864b8-f0bf-4c39-ab0e-b9760d437feb" name="Default Changelist" comment="version avec generation automatique de l'id pour le customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/PaiementRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/PaiementRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/IPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/IPaiement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/PaiementImplService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/PaiementImplService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdsmartfarmer-new.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bdsmartfarmer-new.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/presentation/api/CustomerRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ICustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/service/ICustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LivraisonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smartfarm/backend/serviceImpl/LivraisonServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +51,7 @@
         <entry key="JPA Structure" value="true" />
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -188,7 +189,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="localisation d'un client accessible via commande/user/id" />

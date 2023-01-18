@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface ICustomer {
     CustomerDto findById(String id);
+    CustomerDto findbyEmail(String email);
     ResponseEntity<?> save(CustomerDto customerDto);
     ResponseEntity<?> authentification(ConnexionForm connexionForm);
     List<CustomerDto> listCustomers();

@@ -66,4 +66,10 @@ public class CustomerRestController {
         CustomerRestController.log.info("cacher a l'utilisateur la localisation id :" +id);
         return ResponseEntity.ok(iLocalisation.hideLocalisation(id));
     }
+
+    @GetMapping("infos/{email}")
+    public ResponseEntity<CustomerDto> getInfoUsers(@PathVariable String email) {
+        CustomerRestController.log.info(" vous recuperez les infos du user ayant pour email :" + email);
+        return ResponseEntity.ok(iCustomer.findbyEmail(email));
+    }
 }
