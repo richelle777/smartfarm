@@ -68,15 +68,14 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-<<<<<<< Updated upstream
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>5.3.23</version>
-=======
+		</dependency>
+		<dependency>
 			<groupId>com.stripe</groupId>
 			<artifactId>stripe-java</artifactId>
 			<version>22.5.1</version>
->>>>>>> Stashed changes
 		</dependency>
 	</dependencies>
 
