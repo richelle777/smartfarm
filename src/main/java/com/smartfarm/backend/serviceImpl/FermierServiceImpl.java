@@ -56,7 +56,7 @@ public class FermierServiceImpl implements IFermier {
         String id = "";
         while (isIdNotNew){
             long code = Math.round(Math.random()* 10000);
-            id = "IM" + code;
+            id = "FE" + code;
             if (!fermierRepository.existsById(id))
                 isIdNotNew = false;
         }
