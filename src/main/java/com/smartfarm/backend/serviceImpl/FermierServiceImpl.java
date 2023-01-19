@@ -51,6 +51,16 @@ public class FermierServiceImpl implements IFermier {
     public String save(FermierDto fermierDto) {
         String idLocalisation = iLocalisation.save(fermierDto.getLocalisationDto());
         fermierDto.getLocalisationDto().setId(idLocalisation);
+
+        Boolean isIdNotNew = true;
+        String id = "";
+        while (isIdNotNew){
+            long code = Math.round(Math.random()* 10000);
+            id = "IM" + code;
+            if (!fermierRepository.existsById(id))
+                isIdNotNew = false;
+        }
+        fermierDto.setId(id);
         return fermierRepository.save(fermierMapper.toEntity(fermierDto)).getId();
     }
 
