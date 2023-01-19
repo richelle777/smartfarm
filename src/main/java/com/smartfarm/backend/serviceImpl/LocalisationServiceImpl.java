@@ -34,8 +34,8 @@ public class LocalisationServiceImpl implements ILocalisation {
         }
         localisationDto.setId(id);
         localisationDto.setDeleted(false);
-        localisationRepository.save(localisationMapper.toEntity(localisationDto));
-        return "Enregistrement effectué avec succés";
+
+        return localisationRepository.save(localisationMapper.toEntity(localisationDto)).getId();
     }
 
     @Override

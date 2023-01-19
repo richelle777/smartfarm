@@ -49,6 +49,8 @@ public class FermierServiceImpl implements IFermier {
 
     @Override
     public String save(FermierDto fermierDto) {
+        String idLocalisation = iLocalisation.save(fermierDto.getLocalisationDto());
+        fermierDto.getLocalisationDto().setId(idLocalisation);
         return fermierRepository.save(fermierMapper.toEntity(fermierDto)).getId();
     }
 
