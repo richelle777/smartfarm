@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements ICustomer {
                 isIdNotNew = false;
         }
         customerDto.setId(id);
-        if(customerRepository.findById(customerDto.getId()).isPresent() || customerRepository.findById(customerDto.getEmail()).isPresent()){
+        if(customerRepository.findById(customerDto.getId()).isPresent() || customerRepository.findById(customerDto.getEmail()).isPresent() || customerRepository.existsByEmail(customerDto.getEmail())){
             return ResponseEntity.ok("this user is already save");
         }
         else {
