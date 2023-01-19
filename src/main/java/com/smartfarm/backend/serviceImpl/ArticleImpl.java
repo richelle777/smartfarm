@@ -5,8 +5,10 @@ import com.smartfarm.backend.mapper.*;
 import com.smartfarm.backend.model.dto.ArticleDto;
 import com.smartfarm.backend.model.dto.ImageDto;
 import com.smartfarm.backend.model.dto.InfoCommande;
+import com.smartfarm.backend.model.dto.MapArticleCommande;
 import com.smartfarm.backend.model.entities.Commandearticle;
 import com.smartfarm.backend.repository.CommandearticleRepository;
+import com.smartfarm.backend.service.IFermier;
 import com.smartfarm.backend.service.Iimage;
 import com.smartfarm.backend.model.entities.Article;
 import com.smartfarm.backend.repository.ArticleRepository;
@@ -37,6 +39,9 @@ public class ArticleImpl implements IArticle{
     @Autowired
     Iimage iimage;
 
+    @Autowired
+    IFermier iFermier;
+
 
     @Override
     public List<ArticleDto> listArticles() {
@@ -65,13 +70,16 @@ public class ArticleImpl implements IArticle{
 
     @Override
     @Transactional
-    public String save(String string, MultipartFile file) throws IOException {
+    public String save(String string, MultipartFile file, String idFermier) throws IOException {
         //Save image in database
         ImageDto imageDto = iimage.store(file);
 
         // Transform json to articleDto
         Gson gson = new Gson();
         ArticleDto articleDto = gson.fromJson(string, ArticleDto.class);
+
+        //Recherche du fermier
+        articleDto.setFermierDto(iFermier.findFermierById(idFermier));
 
         //set image and tranform to entity
         articleDto.setImageDto(imageDto);
@@ -121,8 +129,8 @@ public class ArticleImpl implements IArticle{
     }
 
     @Override
-    public Map<ArticleDto, List<InfoCommande>> listCommandesArticle(String idFarmer) {
-        Map<ArticleDto, List<InfoCommande>> map = new HashMap<>();
+    public List<MapArticleCommande> listCommandesArticle(String idFarmer) {
+        List<MapArticleCommande> map = new ArrayList<>();
         List<ArticleDto> articleDtos =  articleRepository.findByFermier_Id(idFarmer).get().stream()
                 .map(articleMapper::toDto).collect(Collectors.toList());
         for(ArticleDto articleDto : articleDtos){
@@ -132,7 +140,7 @@ public class ArticleImpl implements IArticle{
                 for(Commandearticle commandearticle: commandearticles){
                     infoCommandes.add(new InfoCommande(commandearticle.getId().getIdCommande(), commandearticle.getQuantite()));
                 }
-                map.put(articleDto, infoCommandes);
+                map.add(new MapArticleCommande(articleDto, infoCommandes));
             }
         }
         return map;

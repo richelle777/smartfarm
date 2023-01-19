@@ -2,6 +2,7 @@ package com.smartfarm.backend.presentation.api;
 
 import com.smartfarm.backend.model.dto.ArticleDto;
 import com.smartfarm.backend.model.dto.InfoCommande;
+import com.smartfarm.backend.model.dto.MapArticleCommande;
 import com.smartfarm.backend.service.IArticle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,10 @@ public class ArticleRestController {
     }
 
     @CrossOrigin("*")
-    @PostMapping(value = "/save")
-    public ResponseEntity<String> saveArticle(@RequestParam("articleDto") String articleDto, @RequestParam("file") MultipartFile file) throws IOException {
+    @PostMapping(value = "/fermier/{id}/save")
+    public ResponseEntity<String> saveArticle(@RequestParam("articleDto") String articleDto, @RequestParam("file") MultipartFile file, @PathVariable String id) throws IOException {
         ArticleRestController.log.info("Enregistrement de l'article");
-        return ResponseEntity.ok(iArticle.save(articleDto, file));
+        return ResponseEntity.ok(iArticle.save(articleDto, file, id));
     }
 
     @CrossOrigin("*")
@@ -71,7 +72,7 @@ public class ArticleRestController {
 
     @CrossOrigin("*")
     @GetMapping("/fermier/{id}/commandes")
-    public  ResponseEntity<Map<ArticleDto, List<InfoCommande>>> getCommandesForFermier(@PathVariable String id){
+    public  ResponseEntity<List<MapArticleCommande>> getCommandesForFermier(@PathVariable String id){
         ArticleRestController.log.info("Collecte des articles du fermier d'id : " + id);
         return ResponseEntity.ok(iArticle.listCommandesArticle(id));
     }
