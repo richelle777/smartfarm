@@ -1,6 +1,7 @@
 package com.smartfarm.backend.presentation.api;
 
 import com.smartfarm.backend.model.dto.CommandearticleDto;
+import com.smartfarm.backend.model.dto.Produit;
 import com.smartfarm.backend.service.ICommandearticle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,11 @@ public class CommandeArticleRestController {
     @GetMapping("/{qte}/{id}/update")
     public int updateCommandeArticle(@PathVariable Integer qte, @PathVariable String id){
         return iCommandearticle.UpdateCommandeArticle(qte, id);
+    }
+
+    @GetMapping("article/{id}")
+    public ResponseEntity<List<Produit>> CommandeArticleByidCommmande(@PathVariable String id) {
+        CommandeArticleRestController.log.info("Lecture de la commande d'id : " + id);
+        return ResponseEntity.ok(iCommandearticle.listArticleByCommande(id));
     }
 }

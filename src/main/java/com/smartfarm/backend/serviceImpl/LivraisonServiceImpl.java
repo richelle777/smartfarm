@@ -32,6 +32,23 @@ public class LivraisonServiceImpl implements ILivraison {
     }
 
     @Override
+    public String save(LivraisonDto livraisonDto) {
+        //Function to create a new id for the localisation
+        Boolean isIdNotNew = true;
+        String id = "";
+        while (isIdNotNew){
+            long code = Math.round(Math.random()* 10000);
+            id = "LI" + code;
+            if (!livraisonRepository.existsById(id))
+                isIdNotNew = false;
+        }
+        livraisonDto.setId(id);
+        livraisonDto.setStatutLivraison("Non livré");
+        livraisonRepository.save(livraisonMapper.toEntity(livraisonDto));
+        return "Enregistrement effectué avec succés";
+    }
+
+    @Override
     public LivraisonDto findLivraisonById(String id) {
         if (livraisonRepository.findById(id).isPresent()) {
             LivraisonDto livraisonDto = livraisonMapper.toDto(livraisonRepository.findById(id).get());

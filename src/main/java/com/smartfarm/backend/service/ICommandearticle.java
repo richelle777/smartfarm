@@ -11,4 +11,5 @@ public interface ICommandearticle {
     int deleteCommandeArticleById(String id);
     int UpdateCommandeArticle(Integer qte , String id);
     List<CommandearticleDto> listCommandeArticles();
+
 }

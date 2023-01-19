@@ -2,6 +2,7 @@ package com.smartfarm.backend.presentation.api;
 
 import com.smartfarm.backend.model.dto.ArticleDto;
 import com.smartfarm.backend.model.dto.CommandeDto;
+import com.smartfarm.backend.model.dto.CommandearticleDto;
 import com.smartfarm.backend.service.IArticle;
 import com.smartfarm.backend.service.ICommande;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,7 @@ public class CommandeRestController {
         return ResponseEntity.ok(iCommande.updateStatut(id, state));
     }
 
-    @CrossOrigin("*")
+
 //    @GetMapping("/user/{id}")
 //    public ResponseEntity<List<CommandeDto>> CommandesUser(@PathVariable String id) {
 //        CommandeRestController.log.info("Mise à jour statut de la commande d'id : " + id);
@@ -49,5 +50,9 @@ public class CommandeRestController {
         CommandeRestController.log.info("Lecture de la commande d'id : " + id);
         return ResponseEntity.ok(iCommande.findById(id));
     }
+
+
+
+
 
 }
