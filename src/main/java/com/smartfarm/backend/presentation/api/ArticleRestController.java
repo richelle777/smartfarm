@@ -1,6 +1,7 @@
 package com.smartfarm.backend.presentation.api;
 
 import com.smartfarm.backend.model.dto.ArticleDto;
+import com.smartfarm.backend.model.dto.InfoCommande;
 import com.smartfarm.backend.service.IArticle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/article")
@@ -54,9 +56,23 @@ public class ArticleRestController {
     }
 
     @CrossOrigin("*")
+    @GetMapping("/{id}/data")
+    public  ResponseEntity<ArticleDto> getArticleById(@PathVariable String id){
+        ArticleRestController.log.info("Lecture de l'article d'id : " + id);
+        return ResponseEntity.ok(iArticle.findById(id));
+    }
+
+    @CrossOrigin("*")
     @GetMapping("/fermier/{id}/all")
     public  ResponseEntity<List<ArticleDto>> getArticlesByIdFermier(@PathVariable String id){
         ArticleRestController.log.info("Collecte des articles du fermier d'id : " + id);
         return ResponseEntity.ok(iArticle.listArticlesByIdFermier(id));
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/fermier/{id}/commandes")
+    public  ResponseEntity<Map<ArticleDto, List<InfoCommande>>> getCommandesForFermier(@PathVariable String id){
+        ArticleRestController.log.info("Collecte des articles du fermier d'id : " + id);
+        return ResponseEntity.ok(iArticle.listCommandesArticle(id));
     }
 }

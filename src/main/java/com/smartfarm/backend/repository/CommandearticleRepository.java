@@ -15,6 +15,9 @@ import java.util.Optional;
 public interface CommandearticleRepository extends JpaRepository<Commandearticle, CommandearticleId> {
 
     Optional<List<Commandearticle>> findByIdIdCommande(String id);
+
+    Optional<List<Commandearticle>> findByIdIdArticle(String id);
+
     @Modifying
     @Query(value = "DELETE FROM `commandearticle` where commandearticle.id_article = :idCommande" , nativeQuery = true)
     void deleteCommandeArticleById(@Param("idCommande") String idCommande);
