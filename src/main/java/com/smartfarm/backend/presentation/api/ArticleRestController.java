@@ -30,6 +30,12 @@ public class ArticleRestController {
 
 
     @CrossOrigin("*")
+    @GetMapping("/fermier/{id}/{idCategory}/searchByCategorie")
+    public  ResponseEntity<List<ArticleDto>> searchArticleFermier(@PathVariable String id, @PathVariable String idCategorie){
+        return ResponseEntity.ok(iArticle.searchArticlesFermierBYCategorie(id, idCategorie));
+    }
+
+    @CrossOrigin("*")
     @GetMapping("/{category}/searchByCategorie")
     public  ResponseEntity<List<ArticleDto>> searchArticle(@PathVariable String category){
         return ResponseEntity.ok(iArticle.searchArticlesBYCategorie(category));
