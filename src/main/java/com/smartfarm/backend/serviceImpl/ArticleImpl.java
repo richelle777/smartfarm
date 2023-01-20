@@ -56,10 +56,9 @@ public class ArticleImpl implements IArticle{
     public List<ArticleDto> searchArticlesFermierBYCategorie(String idFermier, String idCategory) {
         List<ArticleDto> articleDtos = articleRepository.findByFermier_Id(idFermier).get().stream()
                 .map(articleMapper::toDto).collect(Collectors.toList());
-        articleDtos.stream().filter(articleDto -> {
+        return articleDtos.stream().filter(articleDto -> {
             return articleDto.getCategorieDto().getId().equals(idCategory);
         }).collect(Collectors.toList());
-        return articleDtos;
     }
 
     @Override
