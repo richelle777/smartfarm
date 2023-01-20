@@ -11,7 +11,8 @@ import java.util.Map;
 
 public interface IArticle {
     List<ArticleDto> listArticles();
-    List<ArticleDto> searchArticlesBYCategorie(String category);
+    List<ArticleDto> searchArticlesFermierBYCategorie(String idFermier, String idCategory);
+    List<ArticleDto> searchArticlesBYCategorie(String idCategory);
     ArticleDto findById(String id);
     String save(String articleDto, MultipartFile file, String idFermier) throws IOException;
     String update(String articleDto, MultipartFile file) throws IOException;

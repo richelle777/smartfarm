@@ -53,12 +53,19 @@ public class ArticleImpl implements IArticle{
     }
 
     @Override
-    public List<ArticleDto> searchArticlesBYCategorie(String category) {
-        List<ArticleDto> articleDtos = articleRepository.findArticleByCategorie(category).stream().map(article ->{
-            ArticleDto articleDto = articleMapper.toDto(article);
-            return articleDto;
+    public List<ArticleDto> searchArticlesFermierBYCategorie(String idFermier, String idCategory) {
+        List<ArticleDto> articleDtos = articleRepository.findByFermier_Id(idFermier).get().stream()
+                .map(articleMapper::toDto).collect(Collectors.toList());
+        articleDtos.stream().filter(articleDto -> {
+            return articleDto.getCategorieDto().getId().equals(idCategory);
         }).collect(Collectors.toList());
         return articleDtos;
+    }
+
+    @Override
+    public List<ArticleDto> searchArticlesBYCategorie(String idCategory) {
+        return articleRepository.findArticleByCategorie(idCategory).stream()
+                .map(articleMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
